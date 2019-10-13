@@ -1,0 +1,32 @@
+<!--pages/diary/newDiary/newDiary.wxml-->
+<scroll-view class="container1" >
+  <form bindsubmit="bindFormSubmit">
+      <textarea class="title" value='{{title}}' placeholder='' maxlength= '15'  name="title"></textarea>
+      <text class="time" space="emsp">{{date}} {{week}}</text>
+
+      <view wx:if="{{is_choosing_Label}}">
+        <view class = 'label-box'>
+          <view class='choose-label'>
+            <view class='label-line'> 
+              <view wx:for='{{label_list1}}' wx:key=''class='single-label' data-label='{{index}}' bindtap='confirmLabel'>{{item}}</view>
+            </view>
+            <view class='label-line'>
+              <view wx:for='{{label_list2}}' wx:key='' class='single-label' data-label='{{index+3}}' bindtap='confirmLabel'>{{item}}</view>
+            </view>
+            <view class='label-line'>
+              <view wx:for='{{label_list3}}' wx:key='' class='single-label' data-label='{{index+6}}' bindtap='confirmLabel'>{{item}}</view>
+            </view>
+          </view>
+          <view class="diary-label" style='margin:20px 0 0 0;'>{{label_text}}</view>
+        </view>
+      </view>
+      <view wx:else>
+        <view class="diary-label" bindtap='changelabel'>{{label_text}}</view>
+      </view>
+
+      <textarea class="content" value='{{content}}' placeholder='' auto-height="true" maxlength= '-1' name="content"></textarea>
+      <cover-view class='submit-box'>
+        <button  class = "submit" form-type="submit"> 提交 </button>  
+      </cover-view>
+  </form> 
+</scroll-view>

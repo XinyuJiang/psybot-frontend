@@ -1,0 +1,61 @@
+/* pages/mine/editinfo/editinfo.wxss */
+page{
+  height: 100%;
+  background-color: #ffffff; /* 标准的语法 */
+}
+ff-canvas {
+  width: 100%;
+  height: 100%;
+}
+
+
+.container2{
+  width: 90%;
+  margin: 10px 5% 10px 5%;
+  border-radius: 10px;
+  background-color: #fff;  /*浅粉#f5e7e3*/
+}
+.row-container{
+  width:100%;
+  display: flex;
+  justify-content: row;
+  height:45px;
+  border-bottom:1px solid #ffffff; 
+}
+.title{
+height: 35px;
+font-size: 18px;
+width:60%;
+margin: 10px 0 15px 0px;
+letter-spacing:1px;
+color: rgb(82, 79, 75);
+}
+
+.no-data{
+  width: 90%;
+  margin: 50px 0 0 5%;
+  height: 100px;
+  text-align: center;
+  color: #f2b49a;
+  font-size: 15px;
+}
+
+.time-classify-container{
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: row;
+  text-align: center;
+}
+.time-classify{
+  margin: auto;
+  width: 30%;
+  font-size: 13px;
+  border-radius: 5px;
+  border: 1px solid rgb(63, 62, 60);
+}
+
+.mingxiang_table{
+  height:360px;
+  width: 100%;
+}

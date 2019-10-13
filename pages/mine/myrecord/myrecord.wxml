@@ -1,0 +1,48 @@
+
+<view> <!--最外层-->
+
+<!--眼中的我-->
+   <view class="container2">
+      <view class='row-container'>
+        <view class="title" >Nafà眼中的我</view>
+      </view>
+      <image wx:if="{{wordcloud != ''}}" src='{{wordcloud}}' mode="widthFix"/>
+      <view wx:else class='no-data'> 快和【Nafà聊天】，让Nafà认识一下你吧~ </view>
+  </view>
+
+<!--隔断-->
+<view style='height:10px;width:100%; background-color:#f5f5f5;'/>
+  
+ <view class='container2'>
+    <view class='row-container'>
+      <view class="title" >情绪档案</view>
+    </view>
+    <view style="text-align: center;">
+      <view class='mingxiang_table'>
+        <ff-canvas id="scroll" canvas-id="scrollLine" opts="{{ emotions }}"></ff-canvas>
+      </view>
+      <view wx:if="{{!is_emotion}}" class='no-data'>点击【疏导模式】进行Nafà的测试来获得更多数据吧~</view>
+    </view>
+ </view>
+
+<view style='height:20px;'/>
+
+<!--隔断-->
+<view style='height:10px;width:100%; background-color:#f5f5f5;'/>
+
+
+  <view class='container2'>
+    <view class='row-container'>  
+      <view class="title" >冥想记录</view>
+    </view>
+    <view style="text-align: center;">
+      <view class='mingxiang_table' >
+        <ff-canvas id="column-dom" canvas-id="column" opts="{{ mingxiang }}" ></ff-canvas>
+      </view>
+      <view wx:if="{{!is_mingxiang}}" class='no-data'>进行【正念冥想】来获得更多数据吧~</view>
+    </view>
+  </view>
+
+  <view style='height:20px;'/>
+  
+</view> <!--最外层-->

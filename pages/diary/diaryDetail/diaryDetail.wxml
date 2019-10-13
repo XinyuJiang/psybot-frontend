@@ -1,0 +1,15 @@
+<!--pages/diary/diaryDetail/diaryDetail.wxml-->
+<scroll-view class="container1" >
+  <view class='title-label'>
+    <text class="title" space="ensp">{{title}}</text>
+    <view class="diary-label">{{label}}</view>
+  </view>
+  <view style='display: flex;flex-direction: column;'>
+    <text class="time" space="ensp">{{time}}</text>
+    <text class="content" space="ensp">{{content}}</text>
+  </view>
+  <view class="button-box">
+    <button class="button" style='left:90px;' bindtap='toeditdiary'>修改</button>
+    <button class="button" style='border: 2px solid #f2b49a; color: #f2b49a;' bindtap='todeletediary'>删除</button>
+  </view>
+</scroll-view>

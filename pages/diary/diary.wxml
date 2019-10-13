@@ -1,0 +1,34 @@
+<!--pages/diary/diary.wxml-->
+<view wx:if='{{is_null}}' style='width:100%;text-align: center;'>
+  <image  src='https://xinyuJiang.cn/media/no-diary.jpg' mode='widthFix' style='width:35%;padding:40% 0 0 0 ;'/>
+  <view class='no_diary'> 您还没有日记记录噢~ </view>
+  <view class='no_diary' style='padding:0;'> 快点击“+”，记录当下心情吧~ </view>
+</view>
+
+<scroll-view  wx:else  class="container1" >
+
+<view wx:for="{{alldiary}}" wx:key="" wx:for-item="single_day" wx:for-index="dayindex" class="{{single_day.draw_line == true? 'day-container' : '' }}">
+  <view class="diary-day">{{single_day.day}}</view>
+  <view class="diary-other">{{single_day.other}}</view>
+
+
+  <view class="diary-container" wx:for="{{single_day.diarys}}" wx:for-item="single_diary" wx:for-index="timeindex" wx:key="" data-diaryid="{{single_diary.id}}" bindtap="todetail">
+    <view class="diary-box" >
+      <view class="time-label">
+        <view class="dot"/>  
+        <view class="diary-time">{{single_diary.time}}</view>
+        <view class="diary-label">{{single_diary.label}}</view>
+      </view>
+      <view style='display: flex;flex-direction: column;'>
+        <text class="diary-title" space="ensp">{{single_diary.title}}</text>
+        <text class="diary-content" space="ensp">{{single_diary.content}}</text>
+      </view>
+    </view>
+  </view>  
+
+  <view style='height:20px;'/>
+</view>
+
+</scroll-view>
+
+<image src="add.png" class="add" bindtap='tonewdiary' />

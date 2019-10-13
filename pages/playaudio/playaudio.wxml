@@ -1,0 +1,12 @@
+<!--pages/mingxiang/playaudio/playaudio.wxml-->
+<view class='container'>
+<image class='poster' src='{{poster}}'></image>
+<text class='title' >{{title}}</text>
+<text class='singer'>{{singer}}</text>
+<view class='buttonblock'>
+<image class='last' src='./next.png' bindtap='tolast'></image>
+<image class='play' src="./{{playing?'pause.png':'play.png'}}" bindtap='playpause'></image>
+<image class='next' src='./next.png'bindtap='tonext'></image>
+</view>
+</view>
+

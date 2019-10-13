@@ -1,0 +1,16 @@
+<!--pages/mine/editinfo/editinfo.wxml-->
+
+<view>
+  <view class='container1'>
+    <view wx:for="{{info}}" wx:key='{{item.title}}' class="whole-width"> 
+      <view class='info-box'>
+          <view class='info-title'>{{item.title}}</view>
+          <view class="content-box">
+            <view wx:if="{{item.title!=='头像'}}" class="info-content"> {{item.content}}</view>
+            <image wx:else class="info-image" src="{{item.content}}" />
+          </view>
+      </view>
+    </view>
+  </view>
+
+</view>

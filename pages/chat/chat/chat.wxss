@@ -1,0 +1,339 @@
+/** 聊天窗口样式
+ * 54px为回复框高度，js同
+ */
+ page{
+   height: 100%;
+ }
+ 
+.container2{
+  display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 54px;
+	border-top: 1px solid rgb(248, 244, 237);
+	background: #f8f4ed;
+}
+
+/*聊天记录*/
+.message-list {
+	/*margin-bottom: 54px;*/
+	background: #f8f4ed;
+}
+
+/*单元行*/
+.row {
+  display: flex;
+  flex-direction: column;
+  margin: 0 0rpx;
+}
+
+/*日期*/
+.datetime {
+	font-size: 10px;
+	padding: 10px 0;
+	color: #999;
+	text-align: center;
+}
+
+/*主体*/
+.body {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	justify-content: flex-start;
+	width: 100%;
+	margin-top: 10px;
+}
+
+
+/*头像容器*/
+.body.avatar-container {
+	width: 20%;
+}
+
+/*头像*/
+.body .avatar {
+	width: 80rpx;
+	height: 80rpx;
+	border-radius: 50%;
+	margin: 0 20rpx;
+}
+
+/*文本消息*/
+.body .content {
+	font-size: 16px;
+	background: #ffffff;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  border-top-right-radius: 25px;
+	padding: 11px 11px 11px 12px;
+  color:rgba(0, 0, 0, 0.7);
+	line-height: 22px;
+	margin-bottom: 5px;
+  max-width: 65%;
+}
+
+/*图片消息*/
+.picture {
+	width: 160px;
+}
+
+/*回复框*/
+.reply {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 54px;
+	border-top: 1px solid rgb(215, 215, 215);
+	background: rgb(255, 255, 255);
+}
+
+.reply .voice-image {
+	width: 25px;
+	height: 25px;
+	margin-left: 3%;
+}
+
+/*文本输入或语音录入*/
+.reply .opration-area {
+	flex: 1;
+	padding: 8px;
+}
+
+/*回复文本框*/
+.reply input {
+	background: rgb(255, 255, 255);
+	height: 36px;
+	border: 1px solid rgb(221, 221, 221);
+	border-radius: 6px;
+	padding-left: 3px;
+}
+
+/*选取图片*/
+.reply .choose-image {
+	width: 25px;
+	height: 25px;
+	margin-right: 3%;
+}
+/*选择按钮*/
+.button{
+  height: 33px;
+  background-color: rgba(255, 255, 255,0);
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  border-radius: 20px;
+	color:rgba(0, 0, 0, 0.6);
+	font-size: 14px;
+	line-height: 33px;
+  margin-bottom: 3px; 
+}
+
+.button2{
+  background-color: rgba(255, 255, 255, 0);
+  color: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  float: right;
+  left: 7px;
+  bottom:60px;   
+  position: fixed;
+  border-radius: 25%;
+  box-shadow: 0 2px 3px 0 rgba(133, 67, 6, 0.418);
+}
+.button3{
+  background-color: rgb(247, 173, 155);
+  color: rgba(247, 247, 248, 0.918);
+  border-radius: 25px;
+  margin-bottom: 8px;
+}
+.jump-button{ 
+  background-color: rgba(88, 89, 92, 0);
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+  border: 1.5px solid rgba(0, 0, 0, 0.884);
+  float: right;
+  right: 7px;
+  position: fixed;
+  top:10px;   
+}
+.kpurl{
+  background-color: rgba(88, 89, 92, 0);
+  margin-right: 3px;
+}
+.kpurl-title{
+  color: rgb(0, 0, 0);
+  font-size: 16px;
+  margin-top: 10px;
+}
+.kpurl-group{
+  display: flex;
+  flex-direction: row;
+  margin-top:3px;
+  margin-right: 5px; 
+}
+.kpurl-image{
+  height:45px;
+  width:45px;
+  margin-left:25rpx;
+  margin-top: 8px;
+}
+.kpurl-content{
+  color: rgb(95, 93, 93);
+  font-size: 13.5px;
+  width: 80%;
+}
+/*按住说话button*/
+.voice-button {
+	height: 36px;
+	color: #818181;
+	font-size: 14px;
+	line-height: 36px;
+}
+
+/*悬浮提示框*/
+.hud-container {
+	position: fixed;
+	width: 150px;
+	height: 150px;
+	left: 50%;
+	top: 50%;
+	margin-left: -75px;
+	margin-top: -75px;
+}
+
+/*背景层*/
+.hud-background {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #999;
+	opacity: .8;
+	z-index: 11;
+	border-radius: 10px;
+}
+
+/*悬浮框主体*/
+.hud-body {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	z-index: 19;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+
+/*图标*/
+.hud-body image {
+	margin-top: 20px;
+	width: 80px;
+	height: 80px;
+}
+
+/*文字*/
+.hud-body .tip {
+	color: #fff;
+	text-align: center;
+	width: 90%;
+	line-height: 34px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
+
+.hud-body .warning {
+	background: #cc3333;
+	border-radius: 5px;
+}
+.star-image {
+position: absolute;
+top: 50rpx;
+width: 150rpx;
+height: 150rpx;
+src: "../../images/normal.png";
+}
+ 
+ 
+ 
+.item {
+position: absolute;
+top: 50rpx;
+width: 75rpx;
+height: 150rpx;
+}
+
+.rowCenter {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.movable-area {
+  width: 100%;
+  height: 40rpx;
+  position: absolute;
+  bottom: -5rpx;
+  left: 0;
+
+}
+
+.movable-view {
+  width: 92rpx;
+  height: 34rpx;
+  background: rgb(236, 162, 162);
+  box-shadow: 0px 10rpx 30rpx 0px rgba(0, 0, 0, 0.1);
+  border-radius: 18rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.voice {
+  margin-top: 66rpx;
+  height: 100rpx;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.05);
+  border-radius: 5px;
+}
+
+.voice view {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  font-size: 24rpx;
+  color: #4a4a4a;
+  align-items: center;
+  padding-left: 20rpx;
+  box-sizing: border-box;
+}
+
+.voice view image {
+  width: 35rpx;
+  height: 35rpx;
+  margin-right: 20rpx;
+}
+
+.voice progress {
+  width: 100%;
+}
+.voice progress2 {
+  background:#e8cbc0;
+}
+
+.tabclass{
+  width:50%;
+  text-align: center;
+}

@@ -1,0 +1,90 @@
+/* pages/diary/newDiary/newDiary.wxss */
+page{
+  height:100%;
+  background-color: #ffffff; /* 标准的语法 */
+}
+.container1{
+  width:92%;
+  min-height: 100%;
+  border-left: 2px solid rgba(82, 79, 75, 0.089);
+  margin: 0 0 0 8%;
+  padding:0;
+  overflow: hidden;
+  z-index: 1;
+}
+.title{
+  font-size:35px;
+  height:45px;
+  font-weight: bold;
+  padding:20px 0 0 0 ;
+  margin:0 0 2px 6%;
+}
+.time{
+  font-size:15px;
+  margin:0 0 2px 6%;
+  color: #d3d3d3;
+}
+.label-box{
+  width: 100%;
+  display: flex;
+  justify-content: row;
+}
+.choose-label{
+  width: 65%;
+  margin:20px 0 0 5%;
+}
+.label-line{
+  width: 100%;
+  display: flex;
+  justify-content: row;
+  margin-bottom: 5px;
+}
+.single-label{
+  width: 32%;
+  height: 23px;
+  line-height:23px;
+  font-size: 12px;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  color: #000;
+  border: 0.5px solid rgb(0, 0, 0);
+  border-radius: 5px; 
+}
+.diary-label{
+  width: 25%;
+  height: 23px;
+  line-height:23px;
+  font-size: 14px;
+  text-align: center;
+  background-color: rgb(255, 255, 255);
+  color: #f2b49a;
+  border: 1.5px solid #f2b49a;
+  border-radius: 5px; 
+  margin:20px 0 0 70%;
+}
+.content{
+  font-size: 18px;
+  color: #5f5b5b;
+  margin:20px 0 20px 8%;
+  width:85%;
+}
+.submit-box{
+  height: 45px;
+  width: 85px;
+  bottom: 20px;
+  right: 20px;
+  position: fixed;
+}
+.submit{
+  background-color: #ffffff;
+  color: #5f5b5b;
+  font-size: 18px;
+  border: 2px solid #5f5b5b;
+  border-radius: 25px;
+  height: 40px;
+  line-height: 35px;
+  width: 80px;
+}
+.submit:active{
+  background-color: #969696;
+}

@@ -1,0 +1,184 @@
+<ad unit-id="adunit-e406b44681194b7e"></ad>
+<scroll-view upper-threshold="100" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}" scroll-y="true" focus="{{mode}}" enable-back-to-top="true" style="height: {{scroll_height}}px;" class="message-list">
+	<!-- 每一行 -->
+	<view class="row" wx:for="{{message_list}}" wx:key="{{msg_id}}" id="row_{{index}}">
+       <!--完成 按键-->
+      <block wx:if="{{item.msg_type == 'end' && item.showbutton}}" > 
+         <button class="button3" size='mini' bindtap = 'toEnd' >完成</button> 
+      </block>
+      <!--非完成按键类型-->
+    <block wx:if="{{item.msg_type != 'end'}}" >
+		<!-- 日期 -->
+		<view class="datetime" wx:if="{{item.create_time != '' && item.showtime}}">{{item.create_time}}</view>
+		<!-- 头像与内容文本 -->
+		<view class="body" style="flex-flow: {{item.myself == 0 ? 'row' : 'row-reverse'}}" wx:if="{{item.showbutton}}">
+			<view class="avatar-container" >
+				<image class="avatar" src="{{item.head_img_url}}" />
+			</view>
+			<!-- 画三角箭头 -->
+			<view class="triangle" style="{{item.myself == 1 ? 'right: 115rpx; background: #f5c96a' : 'left: 140rpx;'}}" wx:if="{{item.showbutton}}"></view>
+		  <view class="content" style="{{item.myself == 1 ? 'background: #f5c96a; color: #494947;border-top-right-radius: 0px;border-top-left-radius: 20px;' : ''}}" wx:if="{{item.showbutton}}">
+				<image class="picture" wx:if="{{item.msg_type == 'image'&& item.showbutton}}" src="{{item.content}}" mode="widthFix" bindtap="preview"  />
+    	<!-- 初始入口 -->
+        <block wx:elif="{{item.msg_type == 'button1' && item.showbutton}}">
+        <button class="button" bindtap='toCore10' data-text='那就做测试吧~'>那就做测试吧~</button>  <!--core10检测-->
+        <button class="button" bindtap='toJudgeKnowledge' data-text='还是算了吧!'>还是算了吧！</button>   <!--是否科普-->
+        </block> 
+        <!--判断是否进行科普-->
+        <block wx:elif="{{item.msg_type == 'button2' && item.showbutton}}">
+        <button class="button" bindtap='toKnowledge' data-text='好呀~'>好呀~</button>  <!--进行科普-->
+        <button class="button" bindtap='confirmsmalltalk' data-text='还是算了吧！'>还是算了吧！</button>   <!--进入闲聊-->
+        </block> 
+        <!--进行科普-->
+        <view wx:elif="{{item.msg_type == 'kpurl' && item.showbutton}}"  class='kpurl' bindtap="tokpurl">
+          <text class='kpurl-title' >微博上线「仅半年可见」功能</text> 
+          <view class='kpurl-group'>
+           <text class='kpurl-content'>现代人究竟在隐藏什么？</text> 
+           <image class='kpurl-image'src='https://graph.baidu.com/resource/11226e74d8eb088602a1b01560425547.jpg'/>
+          </view>
+        </view> 
+        <!--科普结束 进入闲聊-->
+        <block wx:elif="{{item.msg_type == 'button3' && item.showbutton}}">
+        <button class="button" bindtap='confirmsmalltalk' data-text='我懂了~'>我懂了~</button>   <!--进入闲聊-->
+        </block>
+        <!--CBT 心境检查结束选择-->
+        <block wx:elif="{{item.msg_type == 'button4' && item.showbutton}}">
+        <button class="button" bindtap='toACT' data-text='做一下冥想吧~'>做一下冥想吧~</button>   <!--进入冥想-->
+        <button class="button" bindtap='toKnowledge' data-text='还是学习一下心理学知识吧！'>还是学习一下心理学知识吧！</button>   <!--进入科普-->
+        <button class="button" bindtap='confirmsmalltalk' data-text='我想和你聊聊天~'>我想和你聊聊天~</button>   <!--进入闲聊-->
+        </block> 
+        <!--确认进入闲聊模式-->
+        <block wx:elif="{{item.msg_type == 'ConfirmSmallTalk' && item.showbutton}}">
+        <button class="button" bindtap='tosmalltalk' data-text='好呀~'>好呀~</button>   <!--进入冥想-->
+        <button class="button" bindtap='toshowtab' data-text='算了吧~'>算了吧~</button>   <!--tapbar-->  
+
+
+        </block> 
+        <!--重复冥想-->
+        <block wx:elif="{{item.msg_type == 'button5' && item.showbutton}}">
+        <button class="button" bindtap='toACT' data-text='再冥想一次~'>再冥想一次~</button>  <!--进行冥想-->
+        <button class="button" bindtap='toReportmingxiang' data-text='看一下冥想报告吧！'>看一下冥想报告吧！</button>   <!--冥想报告-->
+        </block> 
+        <!-- 心境检查入口 -->
+        <block wx:elif="{{item.msg_type == 'check1' && item.showbutton}}">
+        <slider style="width:300rpx" min='0' max='9' step='1' value='5' show-value='true' activeColor='#FFFFFF' color='#8319ad' bindchange='toStore'></slider>
+        <button class='button'type = 'mini' bindtap='toConfirm'>确认</button>
+        </block>
+        <!-- 基本检测入口 -->
+        <block wx:elif="{{item.msg_type == 'core' && item.showbutton}}">
+        <slider style="width:300rpx" min='0' max='4' step='1' value='2' show-value='true' activeColor='#FFFFFF' color='#8319ad' bindchange='toStore2'></slider>
+        <button class='button'type = 'mini' bindtap='toCore10'>确认</button>
+        </block>
+        <!-- 正念冥想入口-->
+        <block wx:elif="{{item.msg_type == 'check2' && item.showbutton}}">
+        <button class="button"  bindtap = 'mingxiang' data-text='1'>1 呼吸练习</button>
+        <button class="button"  bindtap = 'mingxiang' data-text='2'>2 晚间冥想</button>
+        <button class="button"  bindtap = 'mingxiang' data-text='3'>3 晨间冥想</button>
+        <button class="button"  bindtap = 'mingxiang' data-text='4'>4 行走冥想</button>
+        <button class="button"  bindtap = 'mingxiang' data-text='5'>5 乘车冥想</button>
+        <button class="button"  bindtap = 'mingxiang' data-text='6'>6 正念减肥</button>
+        <button class="button"  bindtap = 'mingxiang' data-text='7'>7 缓解焦虑</button>
+        </block>
+        <!--冥想反馈-->
+        <view wx:elif="{{item.msg_type == 'response'}}">
+        <input placeholder='{{item.content}}' bindconfirm='toSaveMingxiang' ></input>
+        </view>
+        <!--信念挑战-->
+        <!--询问事件-->
+        <view wx:elif="{{item.msg_type == 'doing'}}">
+        <input placeholder='{{item.content}}' bindconfirm='toDoing' ></input>
+        </view>
+        <!--信念分类-->
+        <view wx:elif="{{item.msg_type == 'classify'}}">
+        <input placeholder='{{item.content}}' bindconfirm='toClassify'></input>
+        </view>
+        <!--信念判断-->
+        <block wx:elif="{{item.msg_type == 'beliefcheck' && item.showbutton}}">
+        <button class='button' bindtap='toB'data-text='{{belief[0]}}'>{{belief[0]}}</button>
+        <button class='button' bindtap='toB'data-text='{{belief[1]}}'>{{belief[1]}}</button>
+        <button class='button' bindtap='toB'data-text='{{belief[2]}}'>{{belief[2]}}</button>
+        <button class='button' bindtap='toB'data-text='{{belief[3]}}'>{{belief[3]}}</button>
+        <button class='button' bindtap='toB'data-text='{{belief[4]}}'>{{belief[4]}}</button>
+        <button class='button' bindtap='toB'data-text='{{belief[5]}}'>{{belief[5]}}</button>
+        <button class='button' bindtap='toB'data-text='{{belief[6]}}'>{{belief[6]}}</button>
+        <button class='button' bindtap='toB'data-text='{{belief[7]}}'>{{belief[7]}}</button>
+        </block>
+        <!--解释阶段-->
+        <view wx:elif="{{item.msg_type == 'b1' && item.showbutton}}">
+        <button class='button' bindtap='toBEnd' data-text='知道，这就是这次的问题！'>知道，这就是这次的问题！</button>
+        <button class='button' bindtap='toBRe' data-text='知道，但这不是我！'>知道，但这不是我！</button>
+        <button class='button' bindtap='toB1' data-text='不知道。'>不知道。</button>
+        </view>
+        <!--例子阶段-->
+        <view wx:elif="{{item.msg_type == 'b2' && item.showbutton}}">
+        <button class='button' bindtap='toBEnd' data-text='不需要，我明白了'>不需要，我明白了~</button>
+        <button class='button' bindtap='toBRe' data-text='不需要，但这不像我！'>不需要，但这不像我！</button>
+        <button class='button' bindtap='toB2' data-text='没明白，举个例子吧！'>没明白，举个例子吧！</button>
+        </view>
+        <!--确认阶段-->
+        <view wx:elif="{{item.msg_type == 'b3' && item.showbutton}}">
+        <button class='button' bindtap='toBRe' data-text='好像不太对？'>好像不太对？</button>
+        <button class='button' bindtap='toBEnd' data-text='哎……没错'>哎……没错</button>
+        </view>
+        <!--修改阶段-->
+        <view wx:elif="{{item.msg_type == 'rewrite'}}">
+        <input placeholder='{{item.content}}' bindconfirm='toAll'></input>
+        </view>
+         
+     	<!-- 文本输入 -->         
+				<view wx:elif="{{item.msg_type == 'text'}}">{{item.content}}</view>
+        			</view>
+		</view>
+    </block>
+	</view>
+</scroll-view>
+
+<view class="hud-container" wx:if="{{status != state.normal}}">
+	<view class="hud-background" />
+	<view class="hud-body">
+		<image src="./images/mic.png" />
+		<view class="tip {{status == state.cancel ? 'warning' : ''}}">{{tips[status]}}</view>
+	</view>
+</view>
+
+<!--左下角浮窗-->
+<view>
+<button class="jump-button" style="top:{{widnowH <=568 ?bar_Height + 50:bar_Height + 55}}px;" bindtap='tosmalltalkdirect'size="mini"> 闲聊模式 </button>
+<button class="button2" bindtap='toFirstPage' size='mini'>帮助</button>
+</view>
+
+<!--最后的导航栏/仿tabbar-->
+
+<view class='container2' wx:if='{{showtab}}'>
+  <button bindtap='toCore10' class='button3' style='margin-right:20px;' size='mini'>基本测试</button>
+  <button bindtap='toACT'class='button3' style='margin-left:20px;' size='mini'>正念冥想</button> 
+</view>
+
+<view  wx:else >
+<view class="reply" style="border-top: 1px solid rgb(248, 244, 237);background: rgb(248, 244, 237);"/>
+</view>
+
+
+<!--播放器-->
+
+<view class='rowCenter' style='width:100%;position: fixed;bottom: 2px;' wx:if="{{player}}">
+    <view class='voice' style='width:auto;margin-top:0;flex-grow:1;position:relative'>
+      <view>
+        <image src='../images/voice.png' mode='widthFix'></image>
+        <text space='ensp'>{{voice.title}}--{{voice.singer}} / {{voice.tip}}</text>
+      </view>
+     <!--
+      <movable-area  class="movable-area" id="movable-area">
+        <movable-view disabled='{{!voice.canPlay}}'  bindchange="voiceSeekMove" bindtouchend='seekTouchEnd' direction="horizontal" class='movable-view' style="opacity:{{voice.canPlay?'1':'0'}}" id="movable-view" x="{{voice.margin}}" damping="1000">
+          <text style='font-size:20rpx;font-family:NotoSansHans-Regular;font-weight:400;color:rgba(255,255,255,1);line-height:30rpx;'>{{voice.time.min}}:{{voice.time.sec}}</text>
+        </movable-view>
+      </movable-area> 
+      -->
+      <progress stroke-width='4' backgroundColor='#fff' activeColor='#e8cbc0' percent='{{voice.progress}}'></progress>
+      
+    </view>
+    <view style='width:100rpx;height:100rpx;background:rgb(236, 162, 162);box-shadow:0px 5px 15px 0px rgb(236, 162, 162);display:flex;align-items:center;justify-content:center' bindtap='voiceClick'>
+      <image src="../images/{{voice.playing?'pause.png':'play.png'}}" style='width:48rpx;height:48rpx;'></image>
+    </view>
+  </view>
+

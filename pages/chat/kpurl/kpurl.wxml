@@ -1,0 +1,2 @@
+<!--pages/chat/kpurl/kpurl.wxml-->
+<web-view src="https://mp.weixin.qq.com/s/IBiHytiXPTTkanHX5qEiwQ">科普尝试连接</web-view>  

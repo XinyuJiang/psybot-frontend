@@ -1,0 +1,30 @@
+<!--pages/feedback/feedback.wxml-->
+<!--上方导航栏-->
+
+<!--页面内容-->
+<view >
+  <!--反馈标题-->
+  <view class="area">
+		<view class='feedback-title' bindblur='tosavetitle'>反馈标题</view>
+    <view class='feedback-type-box'>
+      <view class="feedback-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">产品建议</view>
+      <view class="feedback-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">程序错误</view>
+      <view class="feedback-item {{currentTab==2?'active':''}}" data-current="2" bindtap="clickTab">其他</view>
+    </view> 
+  </view>
+  
+  <!--隔断-->
+  <view style='height:10px;width:100%; background-color:#f5f5f5;'/>
+
+  <!--反馈内容-->
+  <form bindsubmit="toSubmit">
+    <view class="area">
+		  <view class='feedback-title' bindblur='tosavetitle'>反馈内容</view>
+      <textarea class="feedback-content" placeholder='欢迎给我们提出宝贵的建议！' maxlength= '2000' name="content"/>
+      <view class="hint">最多可写2000字</view>
+      <button class="button" form-type="submit" >提    交</button>
+    </view>
+  </form>
+
+</view>
+

@@ -1,0 +1,9 @@
+/* pages/mine/introduce/introduce.wxss */
+page{
+  height:100%;
+  background-image: url("https://xinyuJiang.cn/static/aboutus/introduce.jpg");
+  background-repeat:no-repeat; 
+  background-size:100% ;
+  -moz-background-size:100% ;
+  position: fixed;
+}

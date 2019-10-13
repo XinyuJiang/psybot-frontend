@@ -1,0 +1,104 @@
+<ad unit-id="adunit-e406b44681194be"></ad>
+<scroll-view upper-threshold="100" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}" scroll-y="true" focus="{{mode}}" enable-back-to-top="true"  style="height: {{scroll_height}}px"class="message-list">
+	<!-- 每一行 -->
+	<view class="row" wx:for="{{message_list}}" wx:key="" id="row_{{index}}">
+		<!-- 日期 -->
+		<view class="datetime" wx:if="{{item.create_time != '' && item.showtime}}">{{item.create_time}}</view>
+		<!-- 头像与内容文本 -->
+		<view class="body" style="flex-flow: {{item.myself == 0 ? 'row' : 'row-reverse'}}" wx:if="{{item.showbutton}}">
+			<view class="avatar-container">
+				<image class="avatar" src="{{item.head_img_url}}" />
+			</view>
+			<!-- 画三角箭头 -->
+			<view class="triangle" style="{{item.myself == 1 ? 'right: 115rpx; background: rgb(205, 220, 252)' : 'left: 140rpx;'}}" wx:if="{{item.showbutton}}"></view>
+			<view class="content" style="{{item.myself == 1 ? 'background:rgb(205, 220, 252); color: #494947; border-top-right-radius: 0px;border-top-left-radius: 20px;' : ''}}" wx:if="{{item.showbutton}}">
+      <!--图片-->
+				<image class="picture" wx:if="{{item.msg_type == 'image'}}" src="{{item.content}}" mode="widthFix" bindtap="preview" data-src="{{item.content}}" />
+    	<!-- 初始入口 -->
+        <block wx:elif="{{item.msg_type == 'button' && item.showbutton}}">
+        <button class="button" bindtap='toCBT' data-text='你是怎么进行疏导的呢？'>你是怎么进行疏导的呢？</button>   <!--信念挑战-->
+        <button class="button" bindtap='toACT' data-text='冥想是什么？'>冥想是什么？</button>   <!--正念冥想-->
+        <button class="button" bindtap='toChat' data-text='听说你还能和我聊天？'>听说你还能和我聊天？</button>  <!--和我聊天-->
+        <button class="button" bindtap='toIntro' data-text='你是谁？'>你是谁？</button>  <!--人物介绍-->
+        </block> 
+        <!-- 人物介绍入口 -->
+        <block wx:elif = wx:elif="{{item.msg_type == 'intro1'&& item.showbutton}}">
+        <button class="button" bindtap='toIntro1' data-text='这么厉害？'>这么厉害？</button>  
+        </block>
+        <!--交互节点1，continue-->
+        <block wx:elif = wx:elif="{{item.msg_type == 'intro2' && item.showbutton}}">
+        <button class="button" bindtap='toIntro3' data-text='我又没有病，需要你干什么？'>我又没有病，需要你干什么？</button> 
+        <button class="button" bindtap='toIntro2' data-text='好棒！很高兴认识你！'>好棒！很高兴认识你！</button>       
+        </block>        
+        <!--交互节点2&3，根据用户点击分流-->
+        
+        <!--交互节点3-->
+        <block wx:elif = wx:elif="{{item.msg_type == 'intro3-1' && item.showbutton}}">
+        <button class="button" bindtap='toIntro3_1' data-text='那倒是，再继续讲讲。'>那倒是，再继续讲讲。</button>  
+        </block>
+        <block wx:elif = wx:elif="{{item.msg_type == 'intro3-2' && item.showbutton}}">
+        <button class="button" bindtap='toIntro3_2' data-text='那是当然了。'>那是当然了。</button>  
+        </block>
+        <block wx:elif = wx:elif="{{item.msg_type == 'intro3-3' && item.showbutton}}">
+        <button class="button" bindtap='toIntro3_3' data-text='对，但这和心理健康有什么关系呢？'>对，但这和心理健康有什么关系呢？</button>  
+        </block>
+        <block wx:elif = wx:elif="{{item.msg_type == 'intro3-choice' && item.showbutton}}">
+        <button class="button" bindtap='toIntro3_end' data-text='我明白了！你会提供哪些服务呢？'>我明白了！你会提供哪些服务呢？</button>  <!--跳出-->
+        <button class="button" bindtap='toIntro3_4' data-text='还是没有明白，给我举个例子吧！'>还是没有明白，给我举个例子吧！</button>  
+        </block>
+        <block wx:elif = wx:elif="{{item.msg_type == 'intro3-5' && item.showbutton}}">
+        <button class="button" bindtap='toIntro3_5' data-text='嗯🤫你讲吧'>嗯🤫你讲吧</button>  
+        </block>
+        <block wx:elif = wx:elif="{{item.msg_type == 'intro3-6' && item.showbutton}}">
+        <button class="button" bindtap='toIntro3_6' data-text='唉心疼她，不过这是为什么呢？'>唉心疼她，不过这是为什么呢？</button>  
+        </block>
+        <block wx:elif = wx:elif="{{item.msg_type == 'intro3-7' && item.showbutton}}">
+        <button class="button" bindtap='toIntro3_end' data-text='原来如此！那这应该怎么办呢？'>原来如此！那这应该怎么办呢？</button> <!--跳出-->
+        </block>      
+        <!--ACT1-->
+        <block wx:elif="{{item.msg_type == 'ACT1' && item.showbutton}}">
+          <button class='button' bindtap = 'toACT1' data-text='这么厉害？'>这么厉害？</button>
+        </block>
+        <!-- 正念冥想入口-->
+        <block wx:elif="{{item.msg_type == 'check2' && item.showbutton}}">
+        <button class="button"  bindtap = 'mingxiang' data-text='呼吸练习'  data-code='1'>1 呼吸练习</button>
+        <button class="button"  bindtap = 'mingxiang' data-text='晚间冥想' data-code='2'>2 晚间冥想</button>
+        <button class="button"  bindtap = 'mingxiang' data-text='晨间冥想' data-code='3'>3 晨间冥想</button>
+        <button class="button"  bindtap = 'mingxiang' data-text='行走冥想' data-code='4'>4 行走冥想</button>
+        <button class="button"  bindtap = 'mingxiang' data-text='乘车冥想' data-code='5'>5 乘车冥想</button>
+        <button class="button"  bindtap = 'mingxiang' data-text='正念减肥' data-code='6'>6 正念减肥</button>
+        <button class="button"  bindtap = 'mingxiang' data-text='缓解焦虑' data-code='7'>7 缓解焦虑</button>
+        <button class="button"  bindtap = 'toEnd' data-text='不用啦，我都知道了！'>不用啦，我都知道了！</button>
+        </block>
+        <!--冥想结束-->
+        <block wx:elif="{{item.msg_type == 'end' && item.showbutton}}">
+        <button class="button" bindtap = 'toEnd' data-text='原来如此~'>原来如此~</button> 
+        </block>
+        <!--帮助界面-->
+        <block wx:elif="{{item.msg_type == 'help1' && item.showbutton}}">
+        <button class='button' bindtap = 'toCBT' data-text='需要！'>需要！</button>
+        <button class='button' bindtap = 'toAsk' data-text='没关系，不用了。'>没关系，不用了。</button>
+        </block>
+        <block wx:elif="{{item.msg_type == 'help2' && item.showbutton}}">
+        <button class='button' bindtap='toIntro' data-text='还想知道【你是谁】？'> 还想知道【你是谁】？</button>
+        <button class='button' bindtap='toACT' data-text='还想知道什么是【冥想】。'> 还想知道什么是【冥想】。</button>
+        <button class='button' bindtap='toChat' data-text='听说你还能和我【聊天】？'>听说你还能和我【聊天】？</button>
+        </block>
+        <!--信念挑战-->
+        <!--询问事件-->
+        <view wx:elif="{{item.msg_type == 'CBT1' && item.showbutton}}">
+        <button class='button' bindtap='toAsk' data-text='我知道了。'>我知道了。</button>
+        </view>
+        <!--跳转正式界面-->
+        <view wx:elif="{{item.msg_type == 'showInput' && item.showbutton}}">
+        <button class='button' bindtap='toAsk'data-text='知道啦！'>知道啦！</button>        
+        </view>
+     	<!-- 文本输入 -->         
+				<view wx:elif="{{item.msg_type == 'text'}}">{{item.content}}</view>
+        			</view>
+		</view>
+	</view>
+</scroll-view>
+<view >
+<view class="reply" style="border-top: 1px solid rgb(242, 244, 248);background:rgb(242, 244, 248);"/>
+</view>

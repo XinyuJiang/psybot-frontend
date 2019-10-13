@@ -1,0 +1,66 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/chat/index",
+    "pages/welcome/welcome",
+    "pages/navigation/navigation",
+    "pages/chat/kpurl/kpurl",
+    "pages/mine/mine",
+    "pages/mine/introduce/introduce",
+    "pages/mine/myrecord/myrecord",
+    "pages/mine/feedback/feedback",
+    "pages/chat/smalltalk/smalltalk",
+    "pages/chat/first/first",
+    "pages/playaudio/playaudio",
+    "pages/navigation/kp-web/kp-web",
+    "pages/mine/editinfo/editinfo",
+    "pages/chat/chat/chat",
+    "pages/diary/diary",
+    "pages/diary/diaryDetail/diaryDetail",
+    "pages/diary/newDiary/newDiary",
+    "pages/diary/editDiary/editDiary"
+  ],
+  "requiredBackgroundModes": [
+    "audio"
+  ],
+  "tabBar": {
+    "color": "#5c5e63",
+    "selectedColor": "#5c5e63",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/navigation/navigation",
+        "iconPath": "img/navi-no.png",
+        "selectedIconPath": "img/navi-yes.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/chat/index",
+        "iconPath": "img/chat-no.png",
+        "selectedIconPath": "img/chat-yes.png",
+        "text": "聊天"
+      },
+      {
+        "pagePath": "pages/diary/diary",
+        "iconPath": "img/diary-no.png",
+        "selectedIconPath": "img/diary-yes.png",
+        "text": "日记"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "iconPath": "img/mine-no.png",
+        "selectedIconPath": "img/mine-yes.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "backgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#f2b49a",
+    "navigationBarTitleText": "PsyHack",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

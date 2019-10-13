@@ -1,0 +1,46 @@
+/* index/playaudio/playaudio.wxss */
+page{
+  height: 100%;
+  background:linear-gradient(#c5c4c4,#f2b49a);
+}
+.container{
+  padding: 20rpx 0;
+}
+.poster{
+  height:180px;
+  width: 180px;
+  margin-top:80px;
+}
+.title{
+  position: relative;
+  color:#303030;
+  bottom:0px;
+  font-size: 25px;
+  font-weight: bold;
+  letter-spacing:6px;
+}
+.singer{
+  position: relative;
+  color:#303030;
+  bottom:5px;
+}
+.buttonblock{
+  margin-bottom:80px;
+}
+.last{
+  height:50px;
+  width:50px;
+  transform: rotate(180deg);
+  margin-bottom:10px;
+  margin-right:20px;
+}
+.play{
+  height:80px;
+  width:80px;
+}
+.next{
+  height:50px;
+  width:50px;
+  margin-bottom:10px;
+  margin-left:20px;
+}

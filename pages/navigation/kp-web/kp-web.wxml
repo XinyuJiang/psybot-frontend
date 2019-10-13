@@ -1,0 +1,4 @@
+<!--pages/navigation/kp-web/kp-web.wxml-->
+<web-view src="{{src}}" ></web-view> 
+
+

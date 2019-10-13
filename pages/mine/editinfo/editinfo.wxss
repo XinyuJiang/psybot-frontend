@@ -1,0 +1,43 @@
+/* pages/mine/editinfo/editinfo.wxss */
+page{
+  height: 100%;
+  background-color: #ffffff; /* 标准的语法 */
+}
+.container1{
+  width: 95%;
+  margin: 30px 5% 30px 2.5%;
+}
+.whole-width{
+  width: 100%;
+  height:55px;
+}
+.info-box{
+  width: 100%;
+  height:55px;
+  display: flex;
+  justify-content: row;
+  border-bottom: 1px solid rgba(82, 79, 75, 0.089);
+}
+.info-title{
+  height: 20px;
+  font-size:17px; 
+  width: 30%;             /*********/
+  margin-left:3%;        /*********/
+  margin-top: 25px;
+  color:rgba(82, 79, 75, 0.658);
+}
+.content-box{
+  width:63%;
+}
+.info-content{
+  float:right;
+  height: 20px;
+  font-size:17px; 
+  margin-top: 25px;
+}
+.info-image{
+  height:50px;
+  width: 50px;
+  border-radius: 50%;
+  float:right;
+}

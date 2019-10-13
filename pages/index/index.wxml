@@ -1,0 +1,22 @@
+<!--index.wxml-->
+<view class="container">
+
+    <button class="button-class" wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像和昵称 </button>
+
+    <block wx:else>
+      <text class="nickname">
+      嗨，{{userInfo.nickName}}！
+      </text>
+      <text class="introduction">  
+      我是Nafà，
+      你的人工智能心理健康管家。
+      快来和我聊天吧。
+      </text>
+      <button class="button-class"  bindtap='towelcome'> 开始体验 </button>  
+    </block>
+
+    
+</view>
+
+
+

@@ -1,0 +1,55 @@
+<!--pages/mine/mine.wxml-->
+<view >
+  <view class='avatar-container-box' >
+  <view class='avatar-container'>
+			<image class="avatar" src="{{userInfo.avatarUrl}}" />
+      <view class='info-group'>
+        <text class='name'> {{userInfo.nickName}} </text>
+        <text class='user-id'> ID:PSYHACK{{user_id}}</text>
+      </view>
+  </view>
+  </view>
+
+
+  <view class="container1">
+    <view wx:for="{{stat_lists}}" wx:key="" class="record">
+    <view  wx:if="{{index==0}}" style='border-right:1px solid rgba(82, 79, 75, 0.089);'>
+      <view style='font-size: 30px; font-weight: bold;color:#f2b49a;'>{{item.number}}</view>
+      <!--view style='font-size: 10px; font-weight:lighter; margin:0 0 0 45%;'>{{item.unit}}</view-->
+      <view style='margin-top:6px;font-size: 15px;'>{{item.title}}</view>
+    </view>
+    <view  wx:elif="{{index==2}}" style='border-left:1px solid rgba(82, 79, 75, 0.089);'>
+      <view style='font-size: 30px; font-weight: bold;color:#f2b49a;'>{{item.number}}</view>
+      <!--view style='font-size: 10px; font-weight:lighter; margin:0 0 0 45%;'>{{item.unit}}</view-->
+      <view style='margin-top:6px;font-size: 15px;'>{{item.title}}</view>
+    </view>
+    <view wx:else  style='border-right:1px solid rgba(82, 79, 75, 0.089);border-left:1px solid rgba(82, 79, 75, 0.089);'>
+      <view style='font-size: 30px; font-weight: bold;color:#f2b49a;'>{{item.number}}</view>
+      <!--view style='font-size: 10px; font-weight:lighter;  margin:0 0 0 45%;'>{{item.unit}}</view-->
+      <view style='margin-top:6px;font-size: 15px;'>{{item.title}}</view>
+    </view>
+    </view>
+  </view>
+
+
+  <view class="opration-area">
+    <view wx:for="{{user_lists}}" wx:key="" class='whole-choose'bindtap='{{item.tap}}'>
+    <view class= 'choose-group'>
+		  <view class='choose'>{{item.title}}</view>
+      <image class='go' src='go.png'></image>
+    </view>
+    </view>
+  </view>
+
+  <view class="opration-area">
+    <view wx:for="{{program_lists}}" wx:key="" class='whole-choose'bindtap='{{item.tap}}'>
+    <view class= 'choose-group' >
+		  <view class='choose'>{{item.title}}</view>
+      <image class='go' src='go.png'></image>
+    </view>
+    </view>
+  </view>
+
+  <view style='height:50px;'/>
+
+</view>
