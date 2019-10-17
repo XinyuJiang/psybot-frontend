@@ -10,7 +10,7 @@ Page({
   data: {
     isFirst:true,
     check:true,
-    dailyText: '每日推荐'
+    dailyText: '每日推荐',
   },
   tonavigation: function () {
     clearInterval(this.data.Time)
@@ -40,8 +40,9 @@ this.dailyText()
       url: domain + 'psybot/dailyrecommend/',
       method: 'GET',
       success: res => {
-        dailyText = res.data.data[textID].text.replace(/，/g, "\n").replace(/。/g, "\n\n").replace(/,/g, "\n").replace(/——/g, "  ——")
-        this.setData({
+        var dailyText = res.data.data[textID].text.replace(/，/g, "\n").replace(/。/g, "\n\n").replace(/,/g, "\n").replace(/——/g, "  ——")
+        var that = this
+        that.setData({
           dailyText: dailyText,
           photo_url: res.data.data[textID].photo_url
         })

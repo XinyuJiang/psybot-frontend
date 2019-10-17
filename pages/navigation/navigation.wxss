@@ -1,140 +1,147 @@
 /* pages/navigation/navigation.wxss */
+
 page {
-  background: rgb(255,255,255); /* 标准的语法 */
+  background: rgb(255, 255, 255); /* 标准的语法 */
   height: 100%;
 }
-.swiper-image{
+
+.swiper-image {
   width: 100%;
 }
-.swiper-item{
+
+.swiper-item {
   display: block;
   height: 150px;
 }
 
-
-
-
-.swiper-tab{    
-  width: 90%;    
-  margin:0 0 0 5%;
-  padding-top:10px;
-  /* border-bottom: 2rpx solid #ccc; */    
-  text-align: center;    
-  height: 65rpx;    
-  line-height: 65rpx;    
-  display: flex;    
-  flex-flow: row;    
-  justify-content: space-between;      
+.swiper-tab {
+  width: 90%;
+  margin: 0 0 0 5%;
+  padding-top: 10px;
+  /* border-bottom: 2rpx solid #ccc; */
+  text-align: center;
+  height: 65rpx;
+  line-height: 65rpx;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
   font-size: 16px;
-  }
-.swiper-tab-item{    
-  width: 30%;     
-  color:#f2b49a;
-  border-radius:25px; 
-  background-color: #ffffff;
+}
+
+.swiper-tab-item {
+  width: 30%;
+  color: #f2b49a;
+  border-radius: 25px;
+  background-color: #fff;
   font-weight: bold;
-  }
-.active{    
-  color:#ffffff;    
+}
+
+.active {
+  color: #fff;
   background-color: #f2b49a;
-  font-size: 16px;    
+  font-size: 16px;
   font-weight: bold;
-/*  padding-bottom:10px; */
-  border-bottom:1.5px solid #e8cbc0;
-  }
-  .show{  
-    display: block;
-    }
-  .hidden{  
-    display: none;
-  }
+  /*  padding-bottom:10px; */
+  border-bottom: 1.5px solid #e8cbc0;
+}
 
+.show {
+  display: block;
+}
 
+.hidden {
+  display: none;
+}
 
+/*科普部分*/
 
- /*科普部分*/
-.kp-container{
+.kp-container {
   width: 100%;
-  height:110px;
+  height: 110px;
   display: flex;
   flex-direction: row;
-  
 }
-.kp-image{
+
+.kp-image {
   height: 70px;
   width: 110px;
-  margin-left:15px;
+  margin-left: 15px;
   margin-right: 15px;
   margin-top: 15px;
- 
 }
-.kp-text-group{
+
+.kp-text-group {
   display: flex;
   flex-direction: column;
   width: 85%;
   border-bottom: 0.5px solid rgba(82, 79, 75, 0.089);
 }
-.kp-title{
+
+.kp-title {
   font-size: 16px;
-  height:60px;
-  margin:15px 5px 0 15px;
-  color:rgb(63, 62, 60);
+  height: 60px;
+  margin: 15px 5px 0 15px;
+  color: rgb(63, 62, 60);
 }
-.kp-time{
-  color:#434343;
+
+.kp-time {
+  color: #434343;
   font-size: 10px;
   margin: 0px 5px 0 18px;
 }
 
+/*冥想部分*/
 
-
-
-
- /*冥想部分*/
-.container1{
-  background-color:rgb(255, 255, 255);
+.container1 {
+  background-color: rgb(255, 255, 255);
   padding: 20rpx 0;
-  width:100%;
+  width: 100%;
 }
-.container2{
+
+.container2 {
   justify-content: center;
   display: flex;
   text-align: center;
   flex-flow: wrap;
-  width:94%;
+  width: 94%;
   margin-left: 3%;
 }
-.group{
-  height:200px;
+
+.group {
+  height: 200px;
   width: 45%x;
   align-items: center;
   margin: auto;
 }
-.audioarea{
-  height:130px;
+
+.audioarea {
+  height: 130px;
   width: 130px;
   border-radius: 5px;
-  margin:  auto;
-  background-size:cover;
+  margin: auto;
+  background-size: cover;
   background-repeat: no-repeat;
   box-shadow: 3px 3px 3px rgb(231, 230, 230);
 }
-.audioarea:active{
+
+.audioarea:active {
   background-color: rgba(235, 235, 235, 0.171);
 }
-.textclass{
+
+.textclass {
   position: relative;
   width: 130px;
   max-width: 80%;
   padding-top: 8px;
-  margin:auto;
-  color:rgb(68, 68, 68);
+  margin: auto;
+  color: rgb(68, 68, 68);
   font-size: 14px;
 }
-.play{
-  width:20px;
-  height:20px;
-  position:relative;
-  left:-30%;
-  top:100px;
+
+.play {
+  width: 20px;
+  height: 20px;
+  position: relative;
+  left: -30%;
+  top: 100px;
 }

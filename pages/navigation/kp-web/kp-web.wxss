@@ -1,2 +1,2 @@
 /* pages/navigation/kp-web/kp-web.wxss */
-
+@import "/wxParse/wxParse.wxss";

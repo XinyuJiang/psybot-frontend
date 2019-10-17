@@ -122,12 +122,12 @@ Page({
     var articles = this.data.articles
     if (type == 0) //推荐文章
       wx.navigateTo({
-//        url: "kp-web/kp-web?src=" + recommend[id].link,
+        //        url: "kp-web/kp-web?src=" + recommend[id].link,
         url: "kp-web/kp-web?text=" + recommend[id].text,
       })
     else //科普文章
       wx.navigateTo({
-//        url: "kp-web/kp-web?src=" + articles[id].link,
+        //        url: "kp-web/kp-web?src=" + articles[id].link,
         url: "kp-web/kp-web?text=" + articles[id].text,
       })
   },
@@ -233,72 +233,20 @@ Page({
       complete: res => {
         console.log(this.data.articles)
 
-        // 解码base64
-        function base64_decode(input) { 
-          var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
-          var output = "";
-          var chr1, chr2, chr3;
-          var enc1, enc2, enc3, enc4;
-          var i = 0;
-          input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
-          while (i < input.length) {
-            enc1 = base64EncodeChars.indexOf(input.charAt(i++));
-            enc2 = base64EncodeChars.indexOf(input.charAt(i++));
-            enc3 = base64EncodeChars.indexOf(input.charAt(i++));
-            enc4 = base64EncodeChars.indexOf(input.charAt(i++));
-            chr1 = (enc1 << 2) | (enc2 >> 4);
-            chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
-            chr3 = ((enc3 & 3) << 6) | enc4;
-            output = output + String.fromCharCode(chr1);
-            if (enc3 != 64) {
-              output = output + String.fromCharCode(chr2);
-            }
-            if (enc4 != 64) {
-              output = output + String.fromCharCode(chr3);
-            }
-          }
-          return utf8_decode(output);
-        }
-        // 解码utf-8
-        function utf8_decode(utftext) {  
-          var string = '';
-          let i = 0;
-          let c = 0;
-          let c1 = 0;
-          let c2 = 0;
-          while (i < utftext.length) {
-            c = utftext.charCodeAt(i);
-            if (c < 128) {
-              string += String.fromCharCode(c);
-              i++;
-            } else if ((c > 191) && (c < 224)) {
-              c1 = utftext.charCodeAt(i + 1);
-              string += String.fromCharCode(((c & 31) << 6) | (c1 & 63));
-              i += 2;
-            } else {
-              c1 = utftext.charCodeAt(i + 1);
-              c2 = utftext.charCodeAt(i + 2);
-              string += String.fromCharCode(((c & 15) << 12) | ((c1 & 63) << 6) | (c2 & 63));
-              i += 3;
-            }
-          }
-          return string;
-        }
+
 
 
         // 格式化时间 mtime
         // 格式化标题 desc
-        // 解码正文富文本 text
         var articles = this.data.articles
         const len = this.data.articles.length
         for (let i = 0; i < len; i++) {
           articles[i].mtime = articles[i].mtime.substring(0, 10);
-          if (articles[i].desc.length>26){
+          if (articles[i].desc.length > 26) {
             articles[i].desc = articles[i].desc.substring(0, 26) + '...';
           }
-          articles[i].text = base64_decode(articles[i].text);
-          console.log(articles[i].text);
-          
+          console.log(articles[i].text.substring(0, 50));
+
         }
 
 
