@@ -1,5 +1,4 @@
 /* pages/navigation/navigation.wxss */
-
 page {
   background: rgb(255,255,255); /* 标准的语法 */
   height: 100%;

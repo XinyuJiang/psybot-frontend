@@ -1,15 +1,23 @@
 // pages/navigation/kp-web/kp-web.js
+
 Page({
   data: {
-    src:'',
+//    src:'',
+    text:'',
+    
   },
+
+  
 
 
   onLoad: function (options) {
     this.setData({
-      src: options.src,
+//      src: options.src,
+      text: options.text
     })
-    console.log(this.data.src)
+    var that = this;
+    var article = this.data.text
+
 
   },
 })
