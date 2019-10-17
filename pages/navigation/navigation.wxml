@@ -22,10 +22,11 @@
        <view class="row" wx:for="{{recommend}}" wx:key="">
         <view class='kp-container' data-id='{{index}}' data-type='0' bindtap='tokp'>
              <view class='kp-text-group'>
-                <text class='kp-title' >{{item.title}}</text>   
-                <text class='kp-time' >{{item.time}}</text> 
+             <!-- version2.1.7 desc=>title / mtime=>time / cover=>image -->
+                <text class='kp-title' >{{item.desc}}</text>   
+                <text class='kp-time' >{{item.mtime}}</text> 
               </view>
-              <image class='kp-image' src='{{item.image}}'/>
+              <image class='kp-image' src='{{item.cover}}'/>
         </view>
        </view>       
      </scroll-view>  
@@ -38,10 +39,11 @@
        <view class="row" wx:for="{{articles}}" wx:key="">
         <view class='kp-container'  data-id='{{index}}' data-type='1'bindtap='tokp'>
              <view class='kp-text-group'>
-                <text class='kp-title' >{{item.title}}</text>   
-                <text class='kp-time'>{{item.time}}</text> 
+             <!-- version2.1.7 desc=>title / mtime=>time / cover=>image -->
+                <text class='kp-title' >{{item.desc}}</text>   
+                <text class='kp-time'>{{item.mtime}}</text> 
               </view>
-              <image class='kp-image' src='{{item.image}}'/>
+              <image class='kp-image' src='{{item.cover}}'/>
         </view>
        </view>       
      </scroll-view>  
