@@ -27,6 +27,12 @@ Page({
       url: '../welcome/welcome'
     })
   },
+  toNavigation: function () {
+    clearInterval(this.data.Time)
+    wx.reLaunch({
+      url: '../navigation/navigation'
+    })
+  },
   tofirst: function () {
     wx.navigateTo({
       url: '../first/first'

@@ -279,6 +279,37 @@ Page({
     })
   },
 
+  // 展示每日一句模态框
+  showModal(e) {
+    this.setData({
+      modalName: e
+    })
+  },
+  hideModal(e) {
+    this.setData({
+      modalName: null
+    })
+  },
+
+  // 获取每日图片和文字
+  dailyInfo: function () {
+    var textID = util.currentDay(new Date)
+    console.log("每日推荐序号", textID)
+    wx.request({
+      url: domain + 'dailyrecommend/',
+      method: 'GET',
+      success: res => {
+        var dailyText = res.data.data[textID].text.replace(/，/g, "\n").replace(/。/g, "\n\n").replace(/,/g, "\n").replace(/——/g, "  ——")
+        var that = this
+        that.setData({
+          dailyText: dailyText,
+          photo_url: res.data.data[textID].photo_url
+        })
+      }
+
+    })
+  },
+
 
   /**
    * 生命周期函数--监听页面加载
@@ -289,6 +320,8 @@ Page({
     })
     this.getPaper()
     this.getAudio()
+    this.showModal('Image')
+    this.dailyInfo()
   },
 
 })

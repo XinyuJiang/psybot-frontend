@@ -7,11 +7,11 @@ Page({
 
   },
 
-  
-  showArticle: function () {
+
+  decodeText: function() {
 
     // base64解码
-    function base64_decode(input) { 
+    function base64_decode(input) {
       var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
       var output = "";
       var chr1, chr2, chr3;
@@ -38,7 +38,7 @@ Page({
     }
 
     // utf-8解码
-    function utf8_decode(utftext) { 
+    function utf8_decode(utftext) {
       var string = '';
       let i = 0;
       let c = 0;
@@ -68,18 +68,14 @@ Page({
     })
   },
 
-
-
   onLoad: function(options) {
     this.setData({
       //      src: options.src,
       text: options.text
     })
-    
-    
-    this.showArticle()
-    var that = this;
+    this.decodeText()
     var article = this.data.text
+    // html => wxml
     WxParse.wxParse('article', 'html', article, that, 0);
   },
 })

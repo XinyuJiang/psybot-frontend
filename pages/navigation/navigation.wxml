@@ -71,3 +71,22 @@
   </view>
 
 </view> <!--最外层-->
+
+
+<!--           每日一句           -->
+<view class="cu-modal {{modalName=='Image'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="bg-img" style="background-image: url({{photo_url}});height:200px;">
+      <view class="cu-bar justify-end text-white">
+        <view class="action" bindtap="hideModal">
+          <text class="cuIcon-close "></text>
+        </view>
+      </view>
+    </view>
+    <view>todo:头像+昵称</view>
+    <view class="cu-bar bg-white">
+      <view class="action margin-0 flex-sub  solid-left" bindtap="hideModal">{{dailyText}}</view>
+    </view>
+    <view>todo:button to creaate card</view>
+  </view>
+</view>

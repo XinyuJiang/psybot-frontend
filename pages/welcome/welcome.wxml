@@ -1,9 +1,3 @@
 <!--pages/welcome/welcome.wxml-->
-<view class="container1" style="background-image: url({{photo_url}});opacity:{{0.9}}">
-<view class="jump">
-<button class="jump-button" bindtap='tonavigation'size="mini"> 跳过 </button>
-</view>
-<text class="welcometext" space="emsp">
-{{dailyText}}
-</text>
-</view>
+
+
