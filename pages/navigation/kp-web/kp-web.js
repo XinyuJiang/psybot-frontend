@@ -2,14 +2,10 @@
 var WxParse = require('../../../wxParse/wxParse.js');
 Page({
   data: {
-    //    src:'',
     text: '',
-
   },
 
-
   decodeText: function() {
-
     // base64解码
     function base64_decode(input) {
       var base64EncodeChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
@@ -74,7 +70,7 @@ Page({
     })
     this.decodeText()
     var article = this.data.text
-    var that=this
+    var that = this
     // html => wxml
     WxParse.wxParse('article', 'html', article, that, 0);
   },

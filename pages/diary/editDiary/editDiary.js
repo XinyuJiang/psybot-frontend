@@ -89,6 +89,18 @@ Page({
 
     }
   },
+
+  showModal(name) {
+    this.setData({
+      modalName: name
+    })
+  },
+  hideModal(e) {
+    this.setData({
+      modalName: null
+    })
+  },
+
   onLoad: function (options) {
     //y页面初始化时加载的原始数据
     // 设置标题
@@ -102,6 +114,8 @@ Page({
       week: diaryTime.week
     })
     //console.log(diaryTime)
+
+    this.showModal('DialogModal');
 
     wx.request({
       url: domain_w + 'service/diary/list',

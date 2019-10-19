@@ -1,11 +1,8 @@
 <!--pages/card/card.wxml-->
-
 <view class="cu-card" id="posterBackground">
   <view class="cu-item shadow" id="posterBack">
     <view class="bg-img" style="background-image: url({{photo_url}});height:200px;" id="posterImage"></view>
-
     <view class="cu-bar bg-white">
-
       <view class="padding-sm flex flex-wrap">
         <view class="padding-xs">
           <view class="cu-tag line-black" id="posterZipCode1">2</view>
@@ -20,8 +17,6 @@
         <view class="cu-avatar xl radius" style="background-image:url(image/QRcode.png);" id="posterQRcode">
         </view>
       </view>
-
-
     </view>
     <view class="padding flex justify-center" id="posterText">
       <text>{{dailyText}}</text>
@@ -30,27 +25,24 @@
       <view class="cu-item">
         <view class="cu-avatar round lg" style="background-image:url(image/logo.png);" id="posterLogo"></view>
         <view class="content flex-sub">
-
           <view class="text-black justify-end" id="posterName">一棵李橡树</view>
           <view class="text-gray text-sm flex justify-end" id="posterDate">
             {{date}}
           </view>
           <view class="text-gray text-sm flex justify-end" id="posterPsyhack">
-          @psyhack.top
+            @psyhack.top
           </view>
-
         </view>
       </view>
     </view>
   </view>
 </view>
-
 <view class="cu-card flex flex-wrap justify-around align-center">
   <button class="cu-btn icon bg-whitea" bindtap="toNavigation">
     <text class="cuIcon-back"></text>
   </button>
-<poster id="poster" hide-loading="{{true}}" preload="{{false}}" config="{{posterConfig}}" bind:success="onPosterSuccess" bindtap="onCreatePoster">
+  <poster id="poster" hide-loading="{{true}}" preload="{{false}}" config="{{posterConfig}}" bind:success="onPosterSuccess" bindtap="onCreatePoster">
     <button class="cu-btn bg-white">保存至本地</button>
-</poster>
+  </poster>
   <button class="cu-btn bg-white" open-type='share'>分享至朋友圈</button>
 </view>

@@ -29,4 +29,33 @@
         <button  class = "submit" form-type="submit"> 提交 </button>  
       </cover-view>
   </form> 
+
+
+    <view class="cu-modal {{modalName=='DialogModal'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">Nafa读心术</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-sm">
+    Nafa猜nickName现在处于emotionTag状态，emotionText
+    </view>
+    <view class="padding-sm">
+    如果我猜的不对，可以在日记中修改噢～
+    </view>
+    <view class="padding-sm">
+    【日记写的越多我才会越来越懂你】
+    </view>
+    <view class="cu-bar bg-white justify-end">
+      <view class="action">
+        <button class="cu-btn line-green text-green"  style="color: #f2b49a;" bindtap="hideModal">修改</button>
+        <button class="cu-btn bg-green margin-left" style="background-color: #f2b49a;" bindtap="hideModal">确定</button>
+
+      </view>
+    </view>
+  </view>
+</view>
+
 </scroll-view>

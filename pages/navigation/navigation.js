@@ -5,8 +5,8 @@ const domain = 'https://xinyuJiang.cn/psybot/'
 const articleDomain = 'https://imgtext.psyhack.top'
 Page({
   data: {
-    isFist:true,
-    page:0,
+    isFist: true,
+    page: 0,
     background: [
       'https://xinyuJiang.cn/static/banner/banner1.jpg',
       'https://xinyuJiang.cn/static/banner/banner2.jpg',
@@ -106,12 +106,10 @@ Page({
     var articles = this.data.articles
     if (type == 0) //推荐文章
       wx.navigateTo({
-        //        url: "kp-web/kp-web?src=" + recommend[id].link,
         url: "kp-web/kp-web?text=" + recommend[id].text,
       })
     else //科普文章
       wx.navigateTo({
-        //        url: "kp-web/kp-web?src=" + articles[id].link,
         url: "kp-web/kp-web?text=" + articles[id].text,
       })
   },
@@ -153,8 +151,6 @@ Page({
     })
   },
 
-
-
   /**
    * 文章获取--图文
    */
@@ -181,7 +177,6 @@ Page({
             articles[i].desc = articles[i].desc.substring(0, 26) + '...';
           }
           console.log(articles[i].text.substring(0, 50));
-
         }
 
         //科普文章倒序
@@ -216,7 +211,7 @@ Page({
   /** 
    * 页面上拉触底事件——实现瀑布流
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
     var that = this;
     // 显示加载图标  
     wx.showLoading({
@@ -224,14 +219,14 @@ Page({
     })
     // 页数+1  
     this.setData({
-      page:this.data.page+1
+      page: this.data.page + 1
     })
     wx.request({
-      url: articleDomain + '/service/articles/list?page='+this.data.page,
+      url: articleDomain + '/service/articles/list?page=' + this.data.page,
       method: "POST",
-      success: res =>{
+      success: res => {
         console.log(res)
-        var that=this
+        var that = this
         // 回调函数  
         var articles = that.data.articles;
 
@@ -244,7 +239,8 @@ Page({
         })
         // 隐藏加载框  
         wx.hideLoading();
-      }, complete: res => {
+      },
+      complete: res => {
         console.log(this.data.articles)
 
         // 格式化时间 mtime
@@ -257,7 +253,6 @@ Page({
             articles[i].desc = articles[i].desc.substring(0, 26) + '...';
           }
           console.log(articles[i].text.substring(0, 50));
-
         }
 
         //科普文章倒序
@@ -284,11 +279,9 @@ Page({
         this.setData({
           recommend: recommend
         })
-
       }
     })
-
-  },  
+  },
 
   // 展示每日一句模态框
   showModal(e) {
@@ -300,7 +293,6 @@ Page({
     this.setData({
       modalName: null
     })
-    
   },
 
   // 获取每日图片和文字
@@ -318,17 +310,15 @@ Page({
           photo_url: res.data.data[textID].photo_url
         })
       }
-
     })
   },
 
   // 跳转至生成明信片页面——card
-  toCard: function () {
+  toCard: function() {
     wx.reLaunch({
       url: '../card/card'
     })
   },
-
 
   /**
    * 生命周期函数--监听页面加载
@@ -339,13 +329,12 @@ Page({
     })
     this.getPaper()
     this.getAudio()
-    if(this.data.isFist){
+    if (this.data.isFist) {
       this.showModal('Image')
     }
     this.dailyInfo()
     this.setData({
-      isFist:false
+      isFist: false
     })
   },
-
 })

@@ -29,4 +29,7 @@
         <button  class = "submit" form-type="submit"> 提交 </button>  
       </cover-view>
   </form> 
+
+
+
 </scroll-view>

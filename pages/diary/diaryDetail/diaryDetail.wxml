@@ -9,7 +9,8 @@
     <text class="content" space="ensp">{{content}}</text>
   </view>
   <view class="button-box">
-    <button class="button" style='left:90px;' bindtap='toeditdiary'>修改</button>
+    <button class="button" style='left:90px;' bindtap='toeditdiary' >修改</button>
     <button class="button" style='border: 2px solid #f2b49a; color: #f2b49a;' bindtap='todeletediary'>删除</button>
   </view>
 </scroll-view>
+
