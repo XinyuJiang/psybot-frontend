@@ -4,7 +4,7 @@ const formatTime = date => {
   const day = date.getDate()
   const hour = date.getHours()
   const minute = date.getMinutes()
- // const second = date.getSeconds()
+  // const second = date.getSeconds()
 
   return [month, day].map(formatNumber).join('/') + ' ' + [hour, minute].map(formatNumber).join(':')
 }
@@ -31,7 +31,7 @@ const minutes = date => {
   const minute = date.getMinutes()
   return minute
 }
-const currentDay = date =>{
+const currentDay = date => {
   const currentDay = date.getDate()
   return currentDay
 }
@@ -69,6 +69,22 @@ const diaryTime_new = date => {
   return diaryTime
 }
 
+// 分享页面使用的时间格式
+function shareTime(date) {
+  var shareTime = []
+
+  var dayNames = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期天']
+
+  var year = date.getFullYear()
+  var month = date.getMonth() + 1
+  var day = date.getDate()
+
+  const week = date.getDay() //星期
+
+  shareTime = year + '年' + month + '月' + day + '日 ' + dayNames[week]
+  return shareTime
+}
+
 
 module.exports = {
   formatTime: formatTime,
@@ -76,5 +92,6 @@ module.exports = {
   minutes: minutes,
   currentDay: currentDay,
   diaryTime_list: diaryTime_list,
-  diaryTime_new: diaryTime_new
+  diaryTime_new: diaryTime_new,
+  shareTime: shareTime
 }
