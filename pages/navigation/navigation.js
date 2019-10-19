@@ -292,14 +292,14 @@ Page({
   },
 
   // 获取每日图片和文字
-  dailyInfo: function () {
+  dailyInfo: function() {
     var textID = util.currentDay(new Date)
     console.log("每日推荐序号", textID)
     wx.request({
       url: domain + 'dailyrecommend/',
       method: 'GET',
       success: res => {
-        var dailyText = res.data.data[textID].text.replace(/，/g, "\n").replace(/。/g, "\n\n").replace(/,/g, "\n").replace(/——/g, "  ——")
+        var dailyText = res.data.data[textID].text.replace(/，/g, "\n").replace(/。/g, "\n\n").replace(/,/g, "\n").replace(/!/g, "\n").replace(/----/g, "\t---- ")
         var that = this
         that.setData({
           dailyText: dailyText,
@@ -307,6 +307,13 @@ Page({
         })
       }
 
+    })
+  },
+
+  // 跳转至生成明信片页面——card
+  toCard: function () {
+    wx.reLaunch({
+      url: '../card/card'
     })
   },
 

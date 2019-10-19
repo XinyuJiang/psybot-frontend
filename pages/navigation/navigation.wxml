@@ -1,76 +1,76 @@
-<view >
+<view>
   <!--         滑动窗口推荐           -->
   <swiper indicator-dots="true" autoplay="true" interval="4000" duration="700" circular='true' style='height:{{height}}'>
-        <block wx:for="{{background}}" wx:key="">
-          <swiper-item>
-            <image src='{{item}}' mode='widthFix' class='swiper-image' data-linkpage='{{index}}' bindload='imgHeight' bindtap="tolinkpage"/>
-            <!--<view class="swiper-item {{item}}"></view> -->
-          </swiper-item>
-        </block>
+    <block wx:for="{{background}}" wx:key="">
+      <swiper-item>
+        <image src='{{item}}' mode='widthFix' class='swiper-image' data-linkpage='{{index}}' bindload='imgHeight' bindtap="tolinkpage" />
+        <!--<view class="swiper-item {{item}}"></view> -->
+      </swiper-item>
+    </block>
   </swiper>
 
 
 
 
-<view class="swiper-tab"style='margin-top:2px;'>   
-  <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">推荐</view>      <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">科普</view>      <view class="swiper-tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="clickTab">冥想</view>  </view>
- 
+  <view class="swiper-tab" style='margin-top:2px;'>
+    <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">推荐</view>
+    <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">科普</view>
+    <view class="swiper-tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="clickTab">冥想</view>
+  </view>
 
-<!--         推荐部分           -->
-  <view class = "{{currentTab == 0 ? 'show':'hidden'}}" >    
-     <scroll-view>      
-       <view class="row" wx:for="{{recommend}}" wx:key="">
+
+  <!--         推荐部分           -->
+  <view class="{{currentTab == 0 ? 'show':'hidden'}}">
+    <scroll-view>
+      <view class="row" wx:for="{{recommend}}" wx:key="">
         <view class='kp-container' data-id='{{index}}' data-type='0' bindtap='tokp'>
-             <view class='kp-text-group'>
-             <!-- version2.1.7 desc=>title / mtime=>time / cover=>image -->
-                <text class='kp-title' >{{item.desc}}</text>   
-                <text class='kp-time' >{{item.mtime}}</text> 
-              </view>
-              <image class='kp-image' src='{{item.cover}}'/>
+          <view class='kp-text-group'>
+            <!-- version2.1.7 desc=>title / mtime=>time / cover=>image -->
+            <text class='kp-title'>{{item.desc}}</text>
+            <text class='kp-time'>{{item.mtime}}</text>
+          </view>
+          <image class='kp-image' src='{{item.cover}}' />
         </view>
-       </view>       
-     </scroll-view>  
-  </view>  
+      </view>
+    </scroll-view>
+  </view>
 
 
   <!--         科普部分           -->
-  <view class = "{{currentTab == 1 ? 'show':'hidden'}}" >    
-     <scroll-view>      
-       <view class="row" wx:for="{{articles}}" wx:key="">
-        <view class='kp-container'  data-id='{{index}}' data-type='1'bindtap='tokp'>
-             <view class='kp-text-group'>
-             <!-- version2.1.7 desc=>title / mtime=>time / cover=>image -->
-                <text class='kp-title' >{{item.desc}}</text>   
-                <text class='kp-time'>{{item.mtime}}</text> 
-              </view>
-              <image class='kp-image' src='{{item.cover}}'/>
+  <view class="{{currentTab == 1 ? 'show':'hidden'}}">
+    <scroll-view>
+      <view class="row" wx:for="{{articles}}" wx:key="">
+        <view class='kp-container' data-id='{{index}}' data-type='1' bindtap='tokp'>
+          <view class='kp-text-group'>
+            <!-- version2.1.7 desc=>title / mtime=>time / cover=>image -->
+            <text class='kp-title'>{{item.desc}}</text>
+            <text class='kp-time'>{{item.mtime}}</text>
+          </view>
+          <image class='kp-image' src='{{item.cover}}' />
         </view>
-       </view>       
-     </scroll-view>  
-  </view>  
+      </view>
+    </scroll-view>
+  </view>
 
 
   <!--         冥想部分           -->
-   <view class = "{{currentTab == 2 ? 'show':'hidden'}}">    
-    <scroll-view>   
+  <view class="{{currentTab == 2 ? 'show':'hidden'}}">
+    <scroll-view>
 
-      <view class="container1" >
-          <view class='container2'>
-            <view class='group' wx:for="{{audios}}" wx:key=''>
-              <view class='audioarea' style='background-image:url({{item.picture}})' bindtap='toaudio' wx:key='' data-index = "{{item.id}}" wx:if='{{item.id!=0}}'>
-                <image src='./images/play.png' class='play'></image>
-               </view>
-               <view class='textclass'>{{item.content}}</view>
-             </view>
-           </view>
+      <view class="container1">
+        <view class='container2'>
+          <view class='group' wx:for="{{audios}}" wx:key=''>
+            <view class='audioarea' style='background-image:url({{item.picture}})' bindtap='toaudio' wx:key='' data-index="{{item.id}}" wx:if='{{item.id!=0}}'>
+              <image src='./images/play.png' class='play'></image>
+            </view>
+            <view class='textclass'>{{item.content}}</view>
           </view>
-
-
-
-    </scroll-view>  
+        </view>
+      </view>
+    </scroll-view>
   </view>
-
-</view> <!--最外层-->
+</view>
+<!--最外层-->
 
 
 <!--           每日一句           -->
@@ -83,10 +83,24 @@
         </view>
       </view>
     </view>
-    <view>todo:头像+昵称</view>
-    <view class="cu-bar bg-white">
-      <view class="action margin-0 flex-sub  solid-left" bindtap="hideModal">{{dailyText}}</view>
+    <view class="cu-list menu-avatar">
+      <view class="cu-item">
+        <view class="cu-avatar round lg" style="background-image:url({{photo_url}});"></view>
+        <view class="content flex-sub">
+          <view class="text-grey">心理帮 - 阿涛</view>
+          <view class="text-gray text-sm flex justify-between">
+            发送至 一棵李橡树
+          </view>
+        </view>
+      </view>
     </view>
-    <view>todo:button to creaate card</view>
+    <view class="cu-bar bg-white">
+      <view class="action margin-0 flex-sub" bindtap="hideModal">
+        <text>{{dailyText}}</text>
+      </view>
+    </view>
+    <view class="padding justify-center bg-white">
+      <button class="cu-btn" bindtap="toCard">生成明信片</button>
+    </view>
   </view>
 </view>
