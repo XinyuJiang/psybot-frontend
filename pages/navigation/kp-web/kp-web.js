@@ -70,11 +70,11 @@ Page({
 
   onLoad: function(options) {
     this.setData({
-      //      src: options.src,
       text: options.text
     })
     this.decodeText()
     var article = this.data.text
+    var that=this
     // html => wxml
     WxParse.wxParse('article', 'html', article, that, 0);
   },

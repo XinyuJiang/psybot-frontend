@@ -5,6 +5,7 @@ const domain = 'https://xinyuJiang.cn/psybot/'
 const articleDomain = 'https://imgtext.psyhack.top'
 Page({
   data: {
+    isFist:true,
     background: [
       'https://xinyuJiang.cn/static/banner/banner1.jpg',
       'https://xinyuJiang.cn/static/banner/banner2.jpg',
@@ -96,24 +97,6 @@ Page({
     }
   },
 
-  /* version 2.1.7
-  tokp: function (event) {
-    var id = event.currentTarget.dataset.id
-    console.log(id)
-    var type = event.currentTarget.dataset.type
-    var recommend = this.data.recommend
-    var articles = this.data.articles
-    if(type == 0)  //推荐文章
-      wx.navigateTo({
-         url: "kp-web/kp-web?src=" + recommend[id].src ,
-       })
-    else       //科普文章
-      wx.navigateTo({   
-        url: "kp-web/kp-web?src=" + articles[id].src ,
-      })
-  },
-  */
-
   tokp: function(event) {
     var id = event.currentTarget.dataset.id
     console.log(id)
@@ -168,52 +151,6 @@ Page({
       url: "../playaudio/playaudio?choice=" + choice,
     })
   },
-
-
-  /**
-   * 文章获取 version 2.1.7
-   */
-  /*
-  getPaper: function(){
-    wx.request({
-      url: domain + 'paper_list/',
-      success:res=>{
-        this.setData({
-          articles:res.data.data
-        })
-      },
-      complete:res=>{
-        console.log(this.data.articles)
-        //科普文章倒序
-        var articles = this.data.articles
-        const len = this.data.articles.length
-        for (let j = 0; j < len / 2; ++j) {
-          const t = articles[j]
-          articles[j] = articles[len - 1 - j]
-          articles[len - 1 - j] = t
-        }
-        this.setData({
-          articles: articles
-        })
-
-      //乱序科普文章
-        var recommend = articles
-        const length = len
-        for (let i = 0; i < length; ++i) {
-          const x = Math.floor(Math.random() * length)
-          const y = Math.floor(Math.random() * length)
-          const temp = recommend[x]
-          recommend[x] = recommend[y]
-          recommend[y] = temp
-        }
-        this.setData({
-          recommend: recommend
-        })
-
-      }
-    })
-  },
-  */
 
 
 
@@ -289,6 +226,7 @@ Page({
     this.setData({
       modalName: null
     })
+    
   },
 
   // 获取每日图片和文字
@@ -327,8 +265,13 @@ Page({
     })
     this.getPaper()
     this.getAudio()
-    this.showModal('Image')
+    if(this.data.isFist){
+      this.showModal('Image')
+    }
     this.dailyInfo()
+    this.setData({
+      isFist:false
+    })
   },
 
 })
