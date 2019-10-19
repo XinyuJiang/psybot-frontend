@@ -1,4 +1,5 @@
 <!--pages/card/card.wxml-->
+
 <view class="cu-card" id="posterBackground">
   <view class="cu-item shadow" id="posterBack">
     <view class="bg-img" style="background-image: url({{photo_url}});height:200px;" id="posterImage"></view>
@@ -45,8 +46,11 @@
 </view>
 
 <view class="cu-card flex flex-wrap justify-around align-center">
+  <button class="cu-btn icon bg-whitea" bindtap="toNavigation">
+    <text class="cuIcon-back"></text>
+  </button>
 <poster id="poster" hide-loading="{{true}}" preload="{{false}}" config="{{posterConfig}}" bind:success="onPosterSuccess" bindtap="onCreatePoster">
-    <button class="cu-btn bg-white">生成海报</button>
+    <button class="cu-btn bg-white">保存至本地</button>
 </poster>
   <button class="cu-btn bg-white" open-type='share'>分享至朋友圈</button>
 </view>

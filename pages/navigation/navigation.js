@@ -6,6 +6,7 @@ const articleDomain = 'https://imgtext.psyhack.top'
 Page({
   data: {
     isFist:true,
+    page:0,
     background: [
       'https://xinyuJiang.cn/static/banner/banner1.jpg',
       'https://xinyuJiang.cn/static/banner/banner2.jpg',
@@ -155,7 +156,7 @@ Page({
 
 
   /**
-   * 文章获取--图文（瀑布流）
+   * 文章获取--图文
    */
   getPaper: function() {
     wx.request({
@@ -170,9 +171,6 @@ Page({
       complete: res => {
         console.log(this.data.articles)
 
-
-
-
         // 格式化时间 mtime
         // 格式化标题 desc
         var articles = this.data.articles
@@ -185,7 +183,6 @@ Page({
           console.log(articles[i].text.substring(0, 50));
 
         }
-
 
         //科普文章倒序
         var articles = this.data.articles
@@ -215,6 +212,83 @@ Page({
       }
     })
   },
+
+  /** 
+   * 页面上拉触底事件——实现瀑布流
+   */
+  onReachBottom: function () {
+    var that = this;
+    // 显示加载图标  
+    wx.showLoading({
+      title: '加载中',
+    })
+    // 页数+1  
+    this.setData({
+      page:this.data.page+1
+    })
+    wx.request({
+      url: articleDomain + '/service/articles/list?page='+this.data.page,
+      method: "POST",
+      success: res =>{
+        console.log(res)
+        var that=this
+        // 回调函数  
+        var articles = that.data.articles;
+
+        for (var i = 0; i < res.data.data.articles.length; i++) {
+          articles.push(res.data.data.articles[i]);
+        }
+        // 设置数据  
+        that.setData({
+          articles: that.data.articles
+        })
+        // 隐藏加载框  
+        wx.hideLoading();
+      }, complete: res => {
+        console.log(this.data.articles)
+
+        // 格式化时间 mtime
+        // 格式化标题 desc
+        var articles = this.data.articles
+        const len = this.data.articles.length
+        for (let i = 0; i < len; i++) {
+          articles[i].mtime = articles[i].mtime.substring(0, 10);
+          if (articles[i].desc.length > 26) {
+            articles[i].desc = articles[i].desc.substring(0, 26) + '...';
+          }
+          console.log(articles[i].text.substring(0, 50));
+
+        }
+
+        //科普文章倒序
+        var articles = this.data.articles
+        for (let j = 0; j < len / 2; ++j) {
+          const t = articles[j]
+          articles[j] = articles[len - 1 - j]
+          articles[len - 1 - j] = t
+        }
+        this.setData({
+          articles: articles
+        })
+
+        //乱序推荐文章
+        var recommend = articles
+        const length = len
+        for (let i = 0; i < length; ++i) {
+          const x = Math.floor(Math.random() * length)
+          const y = Math.floor(Math.random() * length)
+          const temp = recommend[x]
+          recommend[x] = recommend[y]
+          recommend[y] = temp
+        }
+        this.setData({
+          recommend: recommend
+        })
+
+      }
+    })
+
+  },  
 
   // 展示每日一句模态框
   showModal(e) {
