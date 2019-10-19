@@ -1,0 +1,6 @@
+{
+  "navigationBarBackgroundColor": "#ffffff",
+  "usingComponents": {
+    "poster": "../../miniprogram_npm/wxa-plugin-canvas/poster"
+  }
+}
