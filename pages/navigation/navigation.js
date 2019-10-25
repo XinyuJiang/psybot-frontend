@@ -5,17 +5,20 @@ const domain = 'https://xinyuJiang.cn/psybot/'
 const articleDomain = 'https://imgtext.psyhack.top'
 Page({
   data: {
+    // 判断是否首次进入本页面，防止模态框多次弹出
     isFist: true,
+    // 下滑拉取更多文章，页面序号
     page: 0,
     background: [
       'https://xinyuJiang.cn/static/banner/banner1.jpg',
       'https://xinyuJiang.cn/static/banner/banner2.jpg',
       'https://xinyuJiang.cn/static/banner/banner3.jpg'
     ],
+    meditationImageUrl: "https://xinyuJiang.cn/static/banner/banner2.jpg",
     height: '',
+
     recommend: [ //type0
     ],
-
     articles: [ //type1
     ],
 
@@ -34,7 +37,6 @@ Page({
         content: "晚间冥想 | 陪伴你在入睡前进行放松"
       }
     ],
-
     currentTab: 0,
   },
 
@@ -96,6 +98,12 @@ Page({
         currentTab: e.target.dataset.current,
       })
     }
+  },
+
+  toMeditation: function () {
+    this.setData({
+      currentTab: 2,
+    })
   },
 
   tokp: function(event) {
@@ -258,8 +266,8 @@ Page({
         console.log(this.data.articles)
 
 
-        
-        
+
+
 
         const len = this.data.articles.length
         //科普文章倒序
