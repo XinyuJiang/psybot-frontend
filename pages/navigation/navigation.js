@@ -169,6 +169,8 @@ Page({
 
         // 格式化时间 mtime
         // 格式化标题 desc
+        // 格式化meta2数据
+        // 暂时格式化作者数据
         var articles = this.data.articles
         const len = this.data.articles.length
         for (let i = 0; i < len; i++) {
@@ -176,7 +178,8 @@ Page({
           if (articles[i].desc.length > 26) {
             articles[i].desc = articles[i].desc.substring(0, 26) + '...';
           }
-          console.log(articles[i].text.substring(0, 50));
+          articles[i].author = articles[i].author.substring(12, 17);
+          articles[i].meta2 = JSON.parse(articles[i].meta2)
         }
 
         //科普文章倒序
@@ -230,7 +233,18 @@ Page({
         // 回调函数  
         var articles = that.data.articles;
 
+        // 追加新数据
+        // 格式化meta2数据
+        // 暂时格式化作者数据
+        // 格式化时间 mtime
+        // 格式化标题 desc
         for (var i = 0; i < res.data.data.articles.length; i++) {
+          res.data.data.articles[i].meta2 = JSON.parse(res.data.data.articles[i].meta2)
+          res.data.data.articles[i].author = res.data.data.articles[i].author.substring(12, 17);
+          res.data.data.articles[i].mtime = res.data.data.articles[i].mtime.substring(0, 10);
+          if (res.data.data.articles[i].desc.length > 26) {
+            res.data.data.articles[i].desc = res.data.data.articles[i].desc.substring(0, 26) + '...';
+          }
           articles.push(res.data.data.articles[i]);
         }
         // 设置数据  
@@ -243,18 +257,11 @@ Page({
       complete: res => {
         console.log(this.data.articles)
 
-        // 格式化时间 mtime
-        // 格式化标题 desc
-        var articles = this.data.articles
-        const len = this.data.articles.length
-        for (let i = 0; i < len; i++) {
-          articles[i].mtime = articles[i].mtime.substring(0, 10);
-          if (articles[i].desc.length > 26) {
-            articles[i].desc = articles[i].desc.substring(0, 26) + '...';
-          }
-          console.log(articles[i].text.substring(0, 50));
-        }
 
+        
+        
+
+        const len = this.data.articles.length
         //科普文章倒序
         var articles = this.data.articles
         for (let j = 0; j < len / 2; ++j) {
@@ -266,19 +273,12 @@ Page({
           articles: articles
         })
 
-        //乱序推荐文章
+        //设置推荐文章
         var recommend = articles
-        const length = len
-        for (let i = 0; i < length; ++i) {
-          const x = Math.floor(Math.random() * length)
-          const y = Math.floor(Math.random() * length)
-          const temp = recommend[x]
-          recommend[x] = recommend[y]
-          recommend[y] = temp
-        }
         this.setData({
           recommend: recommend
         })
+
       }
     })
   },

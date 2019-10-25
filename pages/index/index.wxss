@@ -1,16 +1,18 @@
 /**index.wxss**/
-page{
+
+page {
   height: 100%;
   width: 100%;
-  background: linear-gradient(#c5c4c4,#f2b49a);
-  background-repeat:no-repeat; 
-  background-size:100% ;
-  -moz-background-size:100% ;
+  background: linear-gradient(#c5c4c4, #f2b49a);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  -moz-background-size: 100%;
   position: fixed;
 }
-.container{
-  background-size:100% 100%;
-  background-repeat:no-repeat;
+
+.container {
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
 .userinfo {
@@ -20,39 +22,39 @@ page{
 
 .nickname {
   color: rgb(27, 27, 27);
-  font-weight:bold;
-  font-size: 25px; 
+  font-weight: bold;
+  font-size: 25px;
   position: fixed;
-  left:20px;
+  left: 20px;
   bottom: 200px;
 }
-.introduction{
+
+.introduction {
   color: rgb(82, 79, 75);
-  left:20px;
+  left: 20px;
   bottom: 100px;
   position: fixed;
 }
 
-.button-class{
+.button-class {
   background-color: rgba(182, 174, 174, 0);
   border: 2px solid rgb(82, 79, 75);
   height: 55px;
   border-radius: 0;
-  font-weight:700; 
+  font-weight: 700;
   font-size: 20px;
-  letter-spacing:10px;
+  letter-spacing: 10px;
   color: rgb(82, 79, 75);
   width: 90%;
   position: fixed;
   bottom: 3%;
 }
 
-.welcometext{
+.welcometext {
   margin-bottom: 20px;
 }
 
-
-.button-class-2{
+.button-class-2 {
   background-color: rgba(102, 144, 206, 0);
   color: rgba(6, 14, 29, 0.698);
   border: 1.5px solid rgba(8, 35, 158, 0.329);

@@ -1,44 +1,22 @@
 //index.js
-//获取应用实例
 const app = getApp()
 
 Page({
-
   data: {
     motto: 'Hello World',
     userInfo: {},
-    userOpenId:'',
+    userOpenId: '',
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
-  },
-  tochatpage: function(){
-    wx.navigateTo({
-      url: '../chat/chat'
-    })
-  },
-  towelcome: function () {
-    wx.redirectTo({
-      url: '../welcome/welcome'
-    })
-  },
-  toNavigation: function () {
+  // 跳转
+  toNavigation: function() {
     clearInterval(this.data.Time)
     wx.reLaunch({
       url: '../navigation/navigation'
     })
   },
-  tofirst: function () {
-    wx.navigateTo({
-      url: '../first/first'
-    })
-  },
-  onLoad: function () {
+  onLoad: function() {
     wx.setNavigationBarTitle({
       title: 'PsyHack'
     })
@@ -47,7 +25,7 @@ Page({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
-    } else if (this.data.canIUse){
+    } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
@@ -77,6 +55,6 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-    
+
   }
 })
