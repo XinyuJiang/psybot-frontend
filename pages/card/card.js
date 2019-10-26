@@ -187,6 +187,7 @@ Page({
     photo_url: '',
     dailyText: '每日说',
     date: '',
+    modalName: '',
     posterConfig: posterConfig.cardConfig,
     CustomBar: app.globalData.CustomBar,
   },
@@ -206,7 +207,7 @@ Page({
       url: domain + 'dailyrecommend/',
       method: 'GET',
       success: res => {
-        var dailyText = res.data.data[textID].text.replace(/，/g, "\n").replace(/。/g, "\n\n").replace(/,/g, "\n").replace(/!/g, "\n").replace(/----/g, "\t---- ")
+        var dailyText = res.data.data[textID].text.replace(/，/g, "\n").replace(/。/g, "\n\n").replace(/,/g, "\n").replace(/!/g, "\n").replace(/----/g, "\t---- ").replace(/;/g, "\n\n").replace(/；/g, "\n\n")
         var that = this
         that.setData({
           dailyText: dailyText,
@@ -216,6 +217,27 @@ Page({
     })
     this.setData({
       date: util.shareTime(new Date())
+    })
+  },
+
+  showSucModal() {
+    this.setData({
+      modalName: "Success"
+    })
+  },
+  showWaitModal() {
+    this.setData({
+      modalName: "Wait"
+    })
+  },
+  showFailModal() {
+    this.setData({
+      modalName: "Fail"
+    })
+  },
+  hideModal(e) {
+    this.setData({
+      modalName: null
     })
   },
 
@@ -232,12 +254,14 @@ Page({
       Poster.create(true);
     });
   },
+
   onPosterSuccess(e) {
     const {
       detail
     } = e;
     console.log(detail)
     // 绘制耗时，延时
+    var that = this
     setTimeout(function() {
       // 获取用户设置
       wx.getSetting({
@@ -254,6 +278,7 @@ Page({
         }
       })
       //  保存图片到本地
+      that.showWaitModal()
       console.log(detail)
       wx.getImageInfo({
         src: detail,
@@ -263,11 +288,18 @@ Page({
             filePath: path,
             success(res) {
               console.log(res)
+              that.showSucModal()
+            },
+            fail(res) {
+              that.showFailModal()
             }
           })
+        },
+        fail: function(res) {
+          that.showFailModal()
         }
       })
-    }, 233);
+    }, 1);
   },
 
   onLoad: function() {

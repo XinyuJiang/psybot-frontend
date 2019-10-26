@@ -311,7 +311,7 @@ Page({
       url: domain + 'dailyrecommend/',
       method: 'GET',
       success: res => {
-        var dailyText = res.data.data[textID].text.replace(/，/g, "\n").replace(/。/g, "\n\n").replace(/,/g, "\n").replace(/!/g, "\n").replace(/----/g, "\t---- ")
+        var dailyText = res.data.data[textID].text.replace(/，/g, "\n").replace(/。/g, "\n\n").replace(/,/g, "\n").replace(/!/g, "\n").replace(/----/g, "\t---- ").replace(/;/g, "\n\n").replace(/；/g, "\n\n")
         var that = this
         that.setData({
           dailyText: dailyText,

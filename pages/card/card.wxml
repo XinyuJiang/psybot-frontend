@@ -44,5 +44,44 @@
   <poster id="poster" hide-loading="{{true}}" preload="{{false}}" config="{{posterConfig}}" bind:success="onPosterSuccess" bindtap="onCreatePoster">
     <button class="cu-btn bg-white">保存至本地</button>
   </poster>
-  <button class="cu-btn bg-white" open-type='share'>分享至朋友圈</button>
+  <button class="cu-btn bg-white" open-type='share'>分享给好友</button>
+</view>
+
+<view class="cu-modal {{modalName=='Success'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">图片保存成功</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+  </view>
+   <view class="padding-xl">
+      请在相册中查看
+    </view>
+</view>
+
+<view class="cu-modal {{modalName=='Fail'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">图片保存失败</view>
+      <view class="action" bindtap="hideModal">
+        <text class="cuIcon-close text-red"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      请稍后重试
+    </view>
+  </view>
+</view>
+
+<view class="cu-modal {{modalName=='Wait'?'show':''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">图片保存中</view>
+    </view>
+    <view class="padding-xl">
+      请稍等
+    </view>
+  </view>
 </view>
