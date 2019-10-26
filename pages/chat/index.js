@@ -2,7 +2,7 @@
 const util = require('../../utils/util.js')
 const app = getApp()
 const domain = 'https://xinyuJiang.cn/psybot/'
-const botURL = '/img/bot-head.jpg'
+const botURL = 'https://xinyuJiang.cn/static/img/bot-head.png'
 Page({
   data: {
     userInfo: {},

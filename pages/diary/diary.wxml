@@ -31,4 +31,4 @@
 
 </scroll-view>
 
-<image src="add.png" class="add" bindtap='tonewdiary' />
+<image src="https://xinyuJiang.cn/static/img/add.png" class="add" bindtap='tonewdiary' />

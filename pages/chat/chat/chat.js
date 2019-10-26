@@ -18,7 +18,7 @@ const belief_list = {
 const util = require('../../../utils/util.js')
 const app = getApp()
 const domain = 'https://xinyuJiang.cn/psybot/'
-const botURL = '/img/bot-head.jpg'
+const botURL = 'https://xinyuJiang.cn/static/img/bot-head.png'
 const checkURL = 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1552196019147&di=45fb898534d9ff85930be8e5e51e81e9&imgtype=0&src=http%3A%2F%2Fs7.sinaimg.cn%2Fmw690%2F001SJEQfzy764OGvu3ca6%26690'
 Page({
   data: {
@@ -913,6 +913,7 @@ Page({
     var that = this;
     var message_list = this.data.message_list;
     var source;
+    var avaurl;
     if (mode == 1) {
       avaurl = app.globalData.userInfo.avatarUrl;
     }
@@ -1067,7 +1068,7 @@ Page({
           viewWidth = rect.width // 节点的宽度
           console.log("viewWidth------->", viewWidth)
         }).exec()
-      }, 1000)
+      }, 2000)
     }
 
     audioManager = wx.getBackgroundAudioManager()

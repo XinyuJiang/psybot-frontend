@@ -7,6 +7,7 @@
       </swiper-item>
     </block>
   </swiper>
+  <ad unit-id="adunit-19830d1de802fa29" ad-type="video" ad-theme="white"></ad>
   <view class="swiper-tab" style='margin-top:2px;'>
     <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">推荐</view>
     <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">科普</view>
@@ -16,7 +17,6 @@
 
 
   <!--         推荐部分           -->
-  <ad unit-id="adunit-19830d1de802fa29" ad-type="video" ad-theme="white"></ad>
   <view class="{{currentTab == 0 ? 'show':'hidden'}}">
     <scroll-view>
       <!--         冥想时刻           -->
@@ -98,7 +98,7 @@
         <view class='container2'>
           <view class='group' wx:for="{{audios}}" wx:key=''>
             <view class='audioarea' style='background-image:url({{item.picture}})' bindtap='toaudio' wx:key='' data-index="{{item.id}}" wx:if='{{item.id!=0}}'>
-              <image src='https://github.com/XinyuJiang/psybot-frontend/blob/master/img/play.png?raw=true' class='play'></image>
+              <image src='https://xinyuJiang.cn/static/img/play.png?raw=true' class='play'></image>
             </view>
             <view class='textclass'>{{item.content}}</view>
           </view>
@@ -122,7 +122,7 @@
         </view>
         <view class="flex solid-up justify-around">
           <view class="padding-sm">
-            <view class="cu-avatar xl radius margin-left" style="background-image:url(https://github.com/XinyuJiang/psybot-frontend/blob/master/img/logo.jpg?raw=true);height: 110px;width: 110px;"></view>
+            <view class="cu-avatar xl radius margin-left" style="background-image:url(https://xinyuJiang.cn/static/img/logo.jpg?raw=true);height: 110px;width: 110px;"></view>
           </view>
           <view class="padding-sm ">
             <view class="text-center">· 第一章|我是第一章标题</view>

@@ -36,7 +36,7 @@
     <view wx:for="{{user_lists}}" wx:key="" class='whole-choose'bindtap='{{item.tap}}'>
     <view class= 'choose-group'>
 		  <view class='choose'>{{item.title}}</view>
-      <image class='go' src='go.png'></image>
+      <image class='go' src='https://xinyuJiang.cn/static/img/go.png'></image>
     </view>
     </view>
   </view>
@@ -45,7 +45,7 @@
     <view wx:for="{{program_lists}}" wx:key="" class='whole-choose'bindtap='{{item.tap}}'>
     <view class= 'choose-group' >
 		  <view class='choose'>{{item.title}}</view>
-      <image class='go' src='go.png'></image>
+      <image class='go' src='https://xinyuJiang.cn/static/img/go.png'></image>
     </view>
     </view>
   </view>

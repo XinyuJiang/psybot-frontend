@@ -11,7 +11,7 @@ page {
 
 .swiper-item {
   display: block;
-  height: 150px;
+  height: 155px;
 }
 
 .swiper-tab {
@@ -20,7 +20,7 @@ page {
   padding-top: 10px;
   /* border-bottom: 2rpx solid #ccc; */
   text-align: center;
-  height: 65rpx;
+  height: 75rpx;
   line-height: 65rpx;
   display: flex;
   flex-flow: row;

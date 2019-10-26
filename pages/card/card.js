@@ -151,7 +151,7 @@ const posterConfig = {
         height: 280,
         x: windowWidth * 0.72,
         y: windowHeight * 0.37,
-        url: '/pages/card/image/QRcode.png',
+        url: 'https://xinyuJiang.cn/static/img/QRcode.png',
         zIndex: 3
       },
       // 公众号LOGO
@@ -161,7 +161,7 @@ const posterConfig = {
         x: windowWidth * 0.12,
         y: windowHeight * 0.82,
         borderRadius: 200,
-        url: '/pages/card/image/logo.png',
+        url: 'https://xinyuJiang.cn/static/img/logo.png',
         zIndex: 3
       }
     ],

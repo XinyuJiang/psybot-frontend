@@ -14,7 +14,7 @@
         </view>
       </view>
       <view class="flex padding justify-end">
-        <view class="cu-avatar xl radius" style="background-image:url(image/QRcode.png);" id="posterQRcode">
+        <view class="cu-avatar xl radius" style="background-image:url(https://xinyuJiang.cn/static/img/QRcode.png);" id="posterQRcode">
         </view>
       </view>
     </view>
@@ -23,7 +23,7 @@
     </view>
     <view class="cu-list menu-avatar">
       <view class="cu-item">
-        <view class="cu-avatar round lg" style="background-image:url(image/logo.png);" id="posterLogo"></view>
+        <view class="cu-avatar round lg" style="background-image:url(https://xinyuJiang.cn/static/img/logo.png);" id="posterLogo"></view>
         <view class="content flex-sub">
           <view class="text-black justify-end" id="posterName">一棵李橡树</view>
           <view class="text-gray text-sm flex justify-end" id="posterDate">

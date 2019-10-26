@@ -4,7 +4,6 @@
     "pages/chat/index",
     "pages/card/card",
     "pages/navigation/navigation",
-    "pages/chat/kpurl/kpurl",
     "pages/mine/mine",
     "pages/mine/introduce/introduce",
     "pages/mine/myrecord/myrecord",

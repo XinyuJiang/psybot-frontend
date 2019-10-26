@@ -398,6 +398,7 @@ makemessage1(mode,type,content,choice){
   var that = this;
   var message_list = this.data.message_list;
   var source;
+  var avaurl;
   if(mode==1){
     avaurl = app.globalData.userInfo.avatarUrl;
   }

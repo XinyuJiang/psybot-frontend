@@ -18,12 +18,12 @@
         <!--当前为停止状态  -->
         <view style="width:250rpx;height:250rpx;top:12rpx;position:relative;" wx:if="{{isplay==false}}" bindtap='play'>
         <image style="width:100%;height:100%;border-radius:50%;" />
-        <image src='images/run.png' style="width:100rpx;height:100rpx;position:absolute;left:75rpx;top:75rpx;"></image>
+        <image src='https://xinyuJiang.cn/static/img/run.png' style="width:100rpx;height:100rpx;position:absolute;left:75rpx;top:75rpx;"></image>
         </view>
         <!--当前为播放状态  -->
         <view style="width:250rpx;height:250rpx;top:12rpx;position:relative;" wx:if="{{isplay==true}}" bindtap='stop'>
         <image style="width:100%;height:100%;border-radius:50%;"  />
-        <image src='images/pause.png' style="width:100rpx;height:100rpx;position:absolute;left:75rpx;top:75rpx;"></image>
+        <image src='https://xinyuJiang.cn/static/img/pause.png' style="width:100rpx;height:100rpx;position:absolute;left:75rpx;top:75rpx;"></image>
         </view>
         </block>
      	<!-- 文本输入 -->         
@@ -36,19 +36,19 @@
 <view class="hud-container" wx:if="{{status != state.normal}}">
 	<view class="hud-background" />
 	<view class="hud-body">
-		<image src="./images/mic.png" />
+		<image src="https://xinyuJiang.cn/static/img/mic.png" />
 		<view class="tip {{status == state.cancel ? 'warning' : ''}}">{{tips[status]}}</view>
 	</view>
 </view>
 
 
 <view class="reply" >
-	<image src="./images/{{mode ? 'voice2' : 'text'}}.png" class="voice-image" bindtap="switchMode" />
+	<image src="https://xinyuJiang.cn/static/img/{{mode ? 'voice2' : 'text'}}.png" class="voice-image" bindtap="switchMode" />
 	<view class="opration-area">
 		<input wx:if="{{mode}}" type="text" confirm-type="send" bindinput="savereply" bindconfirm="reply" value="{{content}}" />
 		<button class="voice-button" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" wx:else>{{tips[status]}}</button>
 	</view>
-  <image src="./images/send.jpg" class="choose-image" bindtap="reply" />
+  <image src="https://xinyuJiang.cn/static/img/send.jpg" class="choose-image" bindtap="reply" />
 <!--	<image src="./images/image.png" class="choose-image" bindtap="chooseImage" />  -->
 </view>
 

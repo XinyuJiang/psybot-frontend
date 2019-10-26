@@ -8,7 +8,7 @@ var lastTime //滑块移动间隔计算
 const util = require('../../../utils/util.js')
 const app = getApp()
 const domain = 'https://xinyuJiang.cn/psybot/'
-const botURL = '/img/bot-head.jpg'
+const botURL = 'https://xinyuJiang.cn/static/img/bot-head.png'
 Page({
   data: {
     message_list: [{
@@ -330,6 +330,7 @@ Page({
     var that = this;
     var message_list = this.data.message_list;
     var source;
+    var avaurl;
     if (mode == 1) {
       avaurl = app.globalData.userInfo.avatarUrl;
     }
