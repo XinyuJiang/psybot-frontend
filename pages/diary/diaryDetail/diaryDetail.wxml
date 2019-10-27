@@ -2,12 +2,25 @@
 <scroll-view class="container1" >
   <view class='title-label'>
     <text class="title" space="ensp">{{title}}</text>
-    <view class="diary-label">{{label}}</view>
+    <view class="diary-label" style='background-color: {{label_list[label].backgroundcolor}};color: {{label_list[label].color}};border: 1px solid {{label_list[label].color}};'>{{label_list[label].text}}</view>
   </view>
   <view style='display: flex;flex-direction: column;'>
-    <text class="time" space="ensp">{{time}}</text>
+    <text class="time" space="ensp">{{time}} {{week}}</text>
     <text class="content" space="ensp">{{content}}</text>
   </view>
+
+  <!--地点-->
+  <view class="location" style='width:{{location_length}}px;' >
+      <image src='https://xinyuJiang.cn/static/img/location.png' />
+      <view style='margin: auto auto 0 5px;'>{{location}}</view>
+  </view>
+  <!--图片-->
+  <view style="width:95%;margin:0 0 0 2.5%;display: flex;justify-content: row;flex-wrap:wrap;margin-bottom:25px;">
+    <view wx:for="{{images}}">
+      <image class="photo" bindtap='preview' data-id="{{item}}" wx:if="{{item != ''}}" src="{{item}}"></image>
+    </view>
+  </view>
+
   <view class="button-box">
     <button class="button" style='left:90px;' bindtap='toeditdiary' >修改</button>
     <button class="button" style='border: 2px solid #f2b49a; color: #f2b49a;' bindtap='todeletediary'>删除</button>

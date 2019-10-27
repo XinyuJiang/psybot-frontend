@@ -1,23 +1,23 @@
 <!--pages/mine/mine.wxml-->
-  <view class='page-title'/>
-  <view style='width:100%;height:9%;'/>
-  <view class = 'group'>
-     <button class='chat-type-box' bindtap='tofirst'>
-       <image class='icon-image' src='https://xinyuJiang.cn/static/chatlead/first.png'/>
-       <view class='chat-title'>帮助手册</view>
-     </button>
-     <button class='chat-type-box'bindtap='tochat'>
-       <image class='icon-image' src='https://xinyuJiang.cn/static/chatlead/chat.png'/>
-       <view class='chat-title'>疏导模式</view>
-     </button>
-  </view>
-  <view class = 'group'>
-     <button class='chat-type-box'bindtap='tosmalltalk'>
-       <image class='icon-image' src='https://xinyuJiang.cn/static/chatlead/smalltalk.png'/>
-       <view class='chat-title'>闲聊模式</view>
-     </button>
-     <button class='chat-type-box' open-type='contact'>
-       <image class='icon-image' src='https://xinyuJiang.cn/static/chatlead/contact.png'/>
-       <view class='chat-title' style=''>咨询师端</view>
-     </button>
-  </view>
+<view class='page-title' />
+<view style='width:100%;height:9%;' />
+<view class='group'>
+  <button class='chat-type-box' bindtap='tofirst'>
+    <image class='icon-image' src='https://xinyuJiang.cn/static/chatlead/first.png' />
+    <view class='chat-title'>帮助手册</view>
+  </button>
+  <button class='chat-type-box' bindtap='tochat'>
+    <image class='icon-image' src='https://xinyuJiang.cn/static/chatlead/chat.png' />
+    <view class='chat-title'>疏导模式</view>
+  </button>
+</view>
+<view class='group'>
+  <button class='chat-type-box' bindtap='tosmalltalk'>
+    <image class='icon-image' src='https://xinyuJiang.cn/static/chatlead/smalltalk.png' />
+    <view class='chat-title'>闲聊模式</view>
+  </button>
+  <button class='chat-type-box' open-type='contact'>
+    <image class='icon-image' src='https://xinyuJiang.cn/static/chatlead/contact.png' />
+    <view class='chat-title' style=''>咨询师端</view>
+  </button>
+</view>

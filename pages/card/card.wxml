@@ -5,12 +5,12 @@
     <view class="cu-bar bg-white">
       <view class="padding-sm flex flex-wrap">
         <view class="padding-xs">
-          <view class="cu-tag line-black" id="posterZipCode1">2</view>
-          <view class="cu-tag line-black" id="posterZipCode2">3</view>
-          <view class="cu-tag line-black" id="posterZipCode3">4</view>
-          <view class="cu-tag line-black" id="posterZipCode4">9</view>
-          <view class="cu-tag line-black" id="posterZipCode5">4</view>
-          <view class="cu-tag line-black" id="posterZipCode6">1</view>
+          <view class="cu-tag line-black" id="posterZipCode1">{{userID[2]}}</view>
+          <view class="cu-tag line-black" id="posterZipCode2">{{userID[0]}}</view>
+          <view class="cu-tag line-black" id="posterZipCode3">{{userID[4]}}</view>
+          <view class="cu-tag line-black" id="posterZipCode4">{{userID[5]}}</view>
+          <view class="cu-tag line-black" id="posterZipCode5">{{userID[6]}}</view>
+          <view class="cu-tag line-black" id="posterZipCode6">{{userID[7]}}</view>
         </view>
       </view>
       <view class="flex padding justify-end">
@@ -56,9 +56,9 @@
       </view>
     </view>
   </view>
-   <view class="padding-xl">
-      请在相册中查看
-    </view>
+  <view class="padding-xl">
+    请在相册中查看
+  </view>
 </view>
 
 <view class="cu-modal {{modalName=='Fail'?'show':''}}">

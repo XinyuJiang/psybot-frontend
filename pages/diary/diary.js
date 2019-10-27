@@ -8,13 +8,22 @@ Page({
     alldiary:'',
     resdiary:'',
     is_null:'',
+    label_list :[
+      { text: '生气', color: '#f15959', backgroundcolor: '#fae9e9' },
+      { text: '难过', color: '#18e2d1', backgroundcolor: '#eefcfb' },
+      { text: '疲惫', color: '#18a2e2', backgroundcolor: '#ebf6fc' },
+      { text: '焦虑', color: '#e27a18', backgroundcolor: '#fcf4ed' },
+      { text: '平静', color: '#27da2f', backgroundcolor: '#f0fff0' },
+      { text: '开心', color: '#f75bb0', backgroundcolor: '#fff0f8' },
+      { text: '兴奋', color: '#f7c65b', backgroundcolor: '#fffaf0' },
+      { text: '惊喜', color: '#822dc7', backgroundcolor: '#f4ebfc' },
+      { text: '无感', color: '#545752', backgroundcolor: '#f0f0f0' }],
+
   },
 
 
   todetail: function (e) {
     var diaryid = e.currentTarget.dataset.diaryid
-    console.log(diaryid)
-
     wx.navigateTo({
       url: 'diaryDetail/diaryDetail?diaryid=' + diaryid ,
     })
@@ -46,8 +55,6 @@ Page({
     this.setData({
       user_id: app.globalData.user_id
     })
-     
-    console.log('日记详情页的user_id   ',this.data.user_id)
 
     wx.request({
       url: domain_w + 'service/diary/list',
@@ -73,7 +80,6 @@ Page({
           this.setData({
             is_null:false
           })
-        var label_list = ['angry', 'sad', 'exhausted', 'anxious', 'neutral', 'happy', 'exciting', 'surprise', 'peace']
 
         var resdiary = this.data.resdiary
         var alldiary = []
@@ -89,12 +95,10 @@ Page({
           while (i < resdiary.length && (resdiary[i].ctime.split(" ")[0] == date))  //判断date
           {
             time = resdiary[i].ctime.split(" ")[1]
-            console.log(date, '  +++++  ', time)
-            console.log('while 2')
             var single_diary = {
               id: resdiary[i].id,
               time: time,
-              label: label_list[resdiary[i].label],
+              label: resdiary[i].label,
               title: resdiary[i].title,
               content: resdiary[i].content
             }
@@ -133,19 +137,19 @@ Page({
 
 function monthTostring(month) {
   var monthstring
-  var monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-  if (month == '01') monthstring = 'January'
-  else if (month == '02') monthstring = 'February'
-  else if (month == '03') monthstring = 'March'
-  else if (month == '04') monthstring = 'April'
-  else if (month == '05') monthstring = 'May'
-  else if (month == '06') monthstring = 'June'
-  else if (month == '07') monthstring = 'July'
-  else if (month == '08') monthstring = 'August'
-  else if (month == '09') monthstring = 'September'
-  else if (month == '10') monthstring = 'October'
-  else if (month == '11') monthstring = 'November'
-  else if (month == '12') monthstring = 'December'
+  var monthNames = ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
+  if (month == '01') monthstring = monthNames[0]
+  else if (month == '02') monthstring = monthNames[1]
+  else if (month == '03') monthstring = monthNames[2]
+  else if (month == '04') monthstring = monthNames[3]
+  else if (month == '05') monthstring = monthNames[4]
+  else if (month == '06') monthstring = monthNames[5]
+  else if (month == '07') monthstring = monthNames[6]
+  else if (month == '08') monthstring = monthNames[7]
+  else if (month == '09') monthstring = monthNames[8]
+  else if (month == '10') monthstring = monthNames[9]
+  else if (month == '11') monthstring = monthNames[10]
+  else if (month == '12') monthstring = monthNames[11]
 
   return monthstring
 }

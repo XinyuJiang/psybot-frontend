@@ -17,7 +17,7 @@
       <view class="time-label">
         <view class="dot"/>  
         <view class="diary-time">{{single_diary.time}}</view>
-        <view class="diary-label">{{single_diary.label}}</view>
+        <view class="diary-label" style='color: {{label_list[single_diary.label].color}};border: 1px solid {{label_list[single_diary.label].color}};'>{{label_list[single_diary.label].text}}</view>
       </view>
       <view style='display: flex;flex-direction: column;'>
         <text class="diary-title" space="ensp">{{single_diary.title}}</text>

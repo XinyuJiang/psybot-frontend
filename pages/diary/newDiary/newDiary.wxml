@@ -2,29 +2,48 @@
 <scroll-view class="container1" >
   <form bindsubmit="bindFormSubmit">
       <textarea class="title" placeholder='标题' maxlength= '15'  name="title"/>
-      <text class="time" space="emsp">{{date}} {{week}}</text>
+      <text class="time" space="emsp">{{date}} {{week}} {{weatherData}}</text>
 
-      <view wx:if="{{is_choosing_Label}}">
-        <view class = 'label-box'>
-          <view class='choose-label'>
-            <view class='label-line'> 
-              <view wx:for='{{label_list1}}' wx:key=''class='single-label' data-label='{{index}}' bindtap='confirmLabel'>{{item}}</view>
-            </view>
-            <view class='label-line'>
-              <view wx:for='{{label_list2}}' wx:key='' class='single-label' data-label='{{index+3}}' bindtap='confirmLabel'>{{item}}</view>
-            </view>
-            <view class='label-line'>
-              <view wx:for='{{label_list3}}' wx:key='' class='single-label' data-label='{{index+6}}' bindtap='confirmLabel'>{{item}}</view>
-            </view>
+      <textarea class="content" placeholder='请输入正文' auto-height="true" maxlength= '300' bindinput='wordCount' name="content"/>
+      <view class="number_remind" style='margin:0 0 30px 80%;'>{{text_num}} / 300 </view>
+
+
+       <!--地点-->
+       <view class="location" style='width:{{location_length}}px;' bindtap='getlocation'>
+         <image src='https://xinyuJiang.cn/static/img/location.png' />
+         <view style='margin: auto auto 0 5px;' >{{location}}</view>
+       </view>
+
+       <!--心情标签-->
+       <view class="diary-label" style='background-color: {{label_list[label_number].backgroundcolor}};color: {{label_list[label_number].color}};border: 1px solid {{label_list[label_number].color}};'bindtap='changelabel'>{{label_text}}</view>
+  
+    <view wx:if="{{is_choosing_Label}}">
+      <scroll-view scroll-x  class="label-box">
+        <view class="label-box2">
+          <view wx:for="{{label_list}}" wx:key="" class="single-label" style="color: {{item.color}};border: 0.5px solid {{item.color}};" data-label='{{index}}' bindtap='confirmLabel'>{{item.text}}</view>
+        </view>
+      </scroll-view>
+    </view>
+
+   
+
+
+    <!--已添加照片-->
+      <view style="width:95%;margin:0 0 0 2.5%;display: flex;justify-content: row;flex-wrap:wrap;margin-bottom:25px;">
+        <view style="display: flex;justify-content: row;flex-wrap:wrap;" wx:if="{{photo_num>0}}">
+          <view wx:for="{{images}}" wx:key=''style="position:relative;">
+            <image class="photo" bindtap='preview' data-id="{{item}}" wx:if="{{item != ''}}" src="{{item}}"/>
+            <view class="delete" bindtap="delete_photo" data-index="{{index}}">X</view>
           </view>
-          <view class="diary-label" style='margin:20px 0 0 0;'>{{label_text}}</view>
+        </view>
+
+     <!--添加照片-->
+        <view class='add_image' bindtap="upload" wx:if="{{photo_num<3}}">
+           <image src='https://xinyuJiang.cn/static/img/add_photo.png'/>
         </view>
       </view>
-      <view wx:else>
-        <view class="diary-label" bindtap='changelabel'>{{label_text}}</view>
-      </view>
+      <view class="number_remind">{{photo_num}} / 3 </view>   <!--照片数量提醒-->
 
-      <textarea class="content" placeholder='请输入正文' auto-height="true" maxlength= '-1' name="content"/>
       <cover-view class='submit-box'>
         <button  class = "submit" form-type="submit"> 提交 </button>  
       </cover-view>

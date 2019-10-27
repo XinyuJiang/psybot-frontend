@@ -85,19 +85,19 @@ page {
    font-size: 15px;
    font-weight: bold;
    /*border: 1px solid #dfdbdb; */
-   width:70%;
+   width:85%;
 }
 
 .diary-label{
    font-size: 14px;
-   height: 23.5px;
-   line-height:23.5px;
-   background-color: #d3d3d3; 
-   width:30%;
+   height: 23px;
+   line-height:23px;
+   background-color: #fff; 
+   width:60px;
    text-align: center;
    color:#ffffff;
-   font-weight: bold;
    z-index:100;
+   border-radius: 5px;
 }
 .diary-triangle{
   background: #d3d3d3;

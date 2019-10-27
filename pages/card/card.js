@@ -28,7 +28,7 @@ const posterConfig = {
         borderRadius: 40,
         zIndex: 1,
       },
-      // 邮政编码
+      // 邮政编码框
       {
         width: windowWidth * 0.052,
         height: windowHeight * 0.037,
@@ -86,6 +86,11 @@ const posterConfig = {
 
     ],
     texts: [
+
+
+
+
+
       // 正文内容
       {
         x: windowWidth * 0.3,
@@ -132,6 +137,73 @@ const posterConfig = {
         color: '#929292',
         zIndex: 2
       },
+      // 邮政编码
+      {
+        x: windowWidth * (0.12 + 0.07 * 0),
+        y: windowHeight * 0.39,
+        width: windowWidth * 0.052,
+        lineNum: 1,
+        baseLine: 'middle',
+        text: '1',
+        fontSize: 42,
+        color: '#080808',
+        zIndex: 2
+      },
+      {
+        x: windowWidth * (0.12 + 0.07 * 1),
+        y: windowHeight * 0.39,
+        width: windowWidth * 0.052,
+        lineNum: 1,
+        baseLine: 'middle',
+        text: '1',
+        fontSize: 42,
+        color: '#080808',
+        zIndex: 2
+      },
+      {
+        x: windowWidth * (0.12 + 0.07 * 2),
+        y: windowHeight * 0.39,
+        width: windowWidth * 0.052,
+        lineNum: 1,
+        baseLine: 'middle',
+        text: '1',
+        fontSize: 42,
+        color: '#080808',
+        zIndex: 2
+      },
+      {
+        x: windowWidth * (0.12 + 0.07 * 3),
+        y: windowHeight * 0.39,
+        width: windowWidth * 0.052,
+        lineNum: 1,
+        baseLine: 'middle',
+        text: '1',
+        fontSize: 42,
+        color: '#080808',
+        zIndex: 2
+      },
+      {
+        x: windowWidth * (0.12 + 0.07 * 4),
+        y: windowHeight * 0.39,
+        width: windowWidth * 0.052,
+        lineNum: 1,
+        baseLine: 'middle',
+        text: '1',
+        fontSize: 42,
+        color: '#080808',
+        zIndex: 2
+      },
+      {
+        x: windowWidth * (0.12 + 0.07 * 5),
+        y: windowHeight * 0.39,
+        width: windowWidth * 0.052,
+        lineNum: 1,
+        baseLine: 'middle',
+        text: '1',
+        fontSize: 42,
+        color: '#080808',
+        zIndex: 2
+      },
     ],
     images: [
       // 背景图片
@@ -160,7 +232,7 @@ const posterConfig = {
         height: 240,
         x: windowWidth * 0.12,
         y: windowHeight * 0.82,
-        borderRadius: 200,
+        borderRadius: 220,
         url: 'https://xinyuJiang.cn/static/img/logo.png',
         zIndex: 3
       }
@@ -187,7 +259,11 @@ Page({
     photo_url: '',
     dailyText: '每日说',
     date: '',
-    userInfo:{},
+    userInfo: {},
+
+    // 用户id=>邮政编码
+    userID: '',
+
     modalName: '',
     posterConfig: posterConfig.cardConfig,
     CustomBar: app.globalData.CustomBar,
@@ -213,6 +289,20 @@ Page({
         that.setData({
           dailyText: dailyText,
           photo_url: res.data.data[textID].photo_url
+        })
+
+
+        // 转换获取邮政编码
+        wx.request({
+          url: domain + 'gethashuserid/?openid=' + that.data.openid,
+          method: 'POST',
+          success: res => {
+            console.log(res)
+            that.setData({
+              userID: res.data.data
+            })
+            console.log(that.data.userID)
+          }
         })
       }
     })
@@ -248,6 +338,10 @@ Page({
     posterConfig.cardConfig.texts[0].text = this.data.dailyText;
     posterConfig.cardConfig.texts[1].text = this.data.userInfo.nickName;
     posterConfig.cardConfig.texts[2].text = this.data.date;
+    // 动态更新邮政编码
+    for (var i = 0; i < 6; i++) {
+      posterConfig.cardConfig.texts[i + 4].text = this.data.userID[i + 2]
+    }
     posterConfig.cardConfig.images[0].url = this.data.photo_url;
     this.setData({
       posterConfig: posterConfig.cardConfig
@@ -310,7 +404,8 @@ Page({
       title: '每日说'
     });
     this.setData({
-      userInfo: app.globalData.userInfo
+      userInfo: app.globalData.userInfo,
+      openid: app.globalData.openID
     })
     this.dailyInfo();
   },

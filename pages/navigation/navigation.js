@@ -22,8 +22,195 @@ Page({
 
     // 是否到达底部
     touchBottom: false,
+
+    // 底部随机出现文案
+    bottomText:[
+      [
+      "写篇日记"],[
+      "做次冥想"],[
+      "和我聊天"]
+    ],
+
     // 获取到的文章数量
-    articleNum:0,
+    articleNum: 0,
+
+    // 分类导航栏相关数据
+    CategoryTwoList: [
+      [{
+          title: '全部',
+          id: 0
+        },
+        {
+          title: '认知科学',
+          id: 1
+        },
+        {
+          title: '探索大脑',
+          id: 2
+        },
+        {
+          title: '心理障碍',
+          id: 3
+        },
+        {
+          title: '精神分析',
+          id: 4
+        },
+        {
+          title: '名人事迹',
+          id: 5
+        },
+        {
+          title: '积极心理学',
+          id: 6
+        },
+        {
+          title: '科普其他',
+          id: 7
+        },
+        {
+          title: '热点剖析',
+          id: 8
+        }
+      ],
+      [{
+        title: '全部',
+        id: 0
+        },
+        {
+          title: '日常减压',
+          id: 1
+        },
+        {
+          title: '原生家庭',
+          id: 2
+        },
+        {
+          title: '自我探索',
+          id: 3
+        },
+        {
+          title: '两性问题',
+          id: 4
+        },
+        {
+          title: '人际关系',
+          id: 5
+        },
+        {
+          title: '情绪',
+          id: 6
+        },
+        {
+          title: '故事分享',
+          id: 7
+        },
+        {
+          title: '生活其他',
+          id: 8
+        }
+      ],
+      [{
+          title: '全部',
+          id: 0
+        },
+        {
+          title: '情商',
+          name: 'categoryTwo1',
+          color: '#f37b1d',
+          id: 1
+        },
+        {
+          title: '职场关系',
+          id: 2
+        },
+        {
+          title: '职业规划',
+          id: 3
+        },
+        {
+          title: '求职技巧',
+          id: 4
+        },
+        {
+          title: '职场其他',
+          id: 5
+        }
+      ],
+      [{
+          title: '全部',
+          id: 0
+        },
+        {
+          title: '效率',
+          id: 1
+        },
+        {
+          title: '能力提升',
+          id: 2
+        },
+        {
+          title: '毕生发展',
+          id: 3
+        },
+        {
+          title: '教育其他',
+          id: 4
+        }
+      ],
+      [{
+          title: '全部',
+          id: 0
+        },
+        {
+          title: '影视',
+          id: 1
+        },
+        {
+          title: '书刊',
+          id: 2
+        },
+        {
+          title: '哲学',
+          id: 3
+        },
+        {
+          title: '跨文化',
+          id: 4
+        },
+        {
+          title: '文化其他',
+          id: 4
+        }
+      ],
+    ],
+    StatusBar: app.globalData.StatusBar,
+    CustomBar: app.globalData.CustomBar,
+    VerticalNavTop: 0,
+    CategoryOnelist: [{
+        name: "科普",
+        id: 0
+      },
+      {
+        name: "生活",
+        id: 1
+      },
+      {
+        name: "职场",
+        id: 2
+      },
+      {
+        name: "教育",
+        id: 3
+      },
+      {
+        name: "文化",
+        id: 4
+      }
+    ],
+    TabCur: 0,
+    MainCur: 0,
+    load: true,
 
     background: [
       'https://xinyuJiang.cn/static/banner/banner1.jpg',
@@ -209,7 +396,7 @@ Page({
         //文章去重
         var hash = [];
         var articles = this.data.articles
-        articles = articles.reduce(function (origin, aiticle) {
+        articles = articles.reduce(function(origin, aiticle) {
           hash[aiticle['id']] ? '' : hash[aiticle['id']] = true && origin.push(aiticle);
           return origin;
         }, []);
@@ -219,8 +406,8 @@ Page({
         })
 
         //计算推荐文章因子
-        articles.sort(function (a, b) {
-          var resultA = a.meta2[0]+a.meta2[2]+a.meta2[3]
+        articles.sort(function(a, b) {
+          var resultA = a.meta2[0] + a.meta2[2] + a.meta2[3]
           var resultB = b.meta2[0] + b.meta2[2] + b.meta2[3]
 
           var parameter = 1;
@@ -244,16 +431,12 @@ Page({
           }
           resultB = resultB * parameter
 
-          return resultB-resultA;
+          return resultB - resultA;
         });
         console.log(articles)
         this.setData({
           recommend: articles
         })
-        
-
-        
-
       }
     })
   },
@@ -304,13 +487,10 @@ Page({
       complete: res => {
         console.log(this.data.articles)
 
-
-
-
         //文章去重
         var hash = [];
         var articles = this.data.articles
-        articles = articles.reduce(function (origin, aiticle) {
+        articles = articles.reduce(function(origin, aiticle) {
           hash[aiticle['id']] ? '' : hash[aiticle['id']] = true && origin.push(aiticle);
           return origin;
         }, []);
@@ -319,26 +499,22 @@ Page({
           articles: articles
         })
 
-        
-
-
-
         //计算推荐文章因子
-        articles.sort(function (a, b) {
+        articles.sort(function(a, b) {
           //  console.log(a[1])
           var resultA = a.meta2[0] + a.meta2[2] + a.meta2[3]
           var resultB = b.meta2[0] + b.meta2[2] + b.meta2[3]
 
           var parameter = 1;
-          var timestamp = Date.parse(new Date())/1000;
-          if((timestamp-a.meta2.org_ctime)<15*24*60*60){
+          var timestamp = Date.parse(new Date()) / 1000;
+          if ((timestamp - a.meta2.org_ctime) < 15 * 24 * 60 * 60) {
             parameter = 0.7
-          } else if ((timestamp - a.meta2.org_ctime) < 30 * 24 * 60 * 60){
+          } else if ((timestamp - a.meta2.org_ctime) < 30 * 24 * 60 * 60) {
             parameter = 0.5
-          }else{
+          } else {
             parameter = 0.1
           }
-          resultA = resultA*parameter;
+          resultA = resultA * parameter;
 
           parameter = 1;
           if ((timestamp - b.meta2.org_ctime) < 15 * 24 * 60 * 60) {
@@ -351,7 +527,7 @@ Page({
           resultB = resultB * parameter
 
 
-          return resultB-resultA;
+          return resultB - resultA;
         });
         console.log(articles)
         this.setData({
@@ -363,13 +539,11 @@ Page({
           this.setData({
             touchBottom: true
           })
-        }
-        else {
+        } else {
           this.setData({
             articleNum: this.data.articles.length
           })
         }
-
 
       }
     })
@@ -397,7 +571,7 @@ Page({
       if (res[0].top < 0) {
         that.setData({
           swiperTapTop: true
-        })     
+        })
       }
       if (res[0].top > 0) {
         that.setData({
@@ -410,9 +584,6 @@ Page({
   onShow: function() {
     this.onPageScroll()
   },
-
-
-
 
   // 关闭每日说浮动按钮
   hideEverydayTalkButton() {
@@ -447,6 +618,69 @@ Page({
     wx.reLaunch({
       url: '../card/card'
     })
+  },
+
+  // 选择分类二显示对应文章
+  articleSelect(e) {
+    console.log(e)
+    var articles = this.data.recommend
+    var knowledge = []
+    for (var i = 0; i < articles.length; i++) {
+      if (articles[i].category1 == e.target.dataset.id1 )
+        if (e.target.dataset.id2==0){ //全部
+          knowledge.push(articles[i])
+        }
+        else if(articles[i].category2+1 == e.target.dataset.id2){
+        knowledge.push(articles[i])
+        }
+        
+    }
+    this.setData({
+      articles: knowledge
+    })
+  },
+
+  //  选择分类一导航栏跳转对应分类二页面
+  tabSelect(e) {
+    console.log(e)
+    this.setData({
+      TabCur: e.currentTarget.dataset.id,
+      MainCur: e.currentTarget.dataset.id,
+      VerticalNavTop: (e.currentTarget.dataset.id - 1) * 50
+    })
+    console.log(this.data.TabCur)
+    console.log(this.data.MainCur)
+  },
+  VerticalMain(e) {
+    let that = this;
+    let CategoryOnelist = this.data.CategoryOnelist;
+    let tabHeight = 0;
+    if (this.data.load) {
+      for (let i = 0; i < CategoryOnelist.length; i++) {
+        let view = wx.createSelectorQuery().select("#main-" + CategoryOnelist[i].id);
+        view.fields({
+          size: true
+        }, data => {
+          CategoryOnelist[i].top = tabHeight;
+          tabHeight = tabHeight + data.height;
+          CategoryOnelist[i].bottom = tabHeight;
+        }).exec();
+      }
+      that.setData({
+        load: false,
+        CategoryOnelist: CategoryOnelist
+      })
+    }
+    let scrollTop = e.detail.scrollTop + 20;
+    for (let i = 0; i < CategoryOnelist.length; i++) {
+      if (scrollTop > CategoryOnelist[i].top && scrollTop < CategoryOnelist[i].bottom) {
+        that.setData({
+          VerticalNavTop: (CategoryOnelist[i].id - 1) * 50,
+          TabCur: CategoryOnelist[i].id
+        })
+        return false
+      }
+    }
   },
 
   /**

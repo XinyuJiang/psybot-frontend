@@ -14,7 +14,9 @@
     <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">推荐</view>
     <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">知识</view>
     <view class="swiper-tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="clickTab">冥想</view>
+<!--
     <view class="swiper-tab-item {{currentTab==3?'active':''}}" data-current="3" bindtap="clickTab">FM</view>
+    -->
   </view>
   <!--         备用吸顶导航           -->
   <view class="{{swiperTapTop==true?'show':'hidden'}}">
@@ -22,7 +24,9 @@
       <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">推荐</view>
       <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">科普</view>
       <view class="swiper-tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="clickTab">冥想</view>
+   <!--   
       <view class="swiper-tab-item {{currentTab==3?'active':''}}" data-current="3" bindtap="clickTab">FM</view>
+      -->
     </view>
   </view>
 
@@ -30,8 +34,9 @@
   <view class="{{everydayTalkButton==true?'show':'hidden'}}">
     <view class="button-everydayTalk">
       <view class="padding">
-        <view class="cu-avatar round lg margin-left" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg);" bindtap="showModal">
-          <view class="cu-tag badge cuIcon-close bg-black" bindtap="hideEverydayTalkButton"></view>
+        <view class="cu-avatar round lg bg-pink margin-left" bindtap="showModal">
+        <text class="avatar-text text-sl">每日说</text>
+          <view class="cu-tag badge cuIcon-close bg-grey" bindtap="hideEverydayTalkButton"></view>
         </view>
       </view>
     </view>
@@ -69,7 +74,7 @@
         <view class='cu-item' data-id='{{index}}' data-type='0' bindtap='tokp'>
           <view class="content">
             <view>{{item.desc}}</view>
-            <view class="cu-tag radius sm">#{{item.category2}}</view>
+            <view class="cu-tag radius sm">#{{CategoryTwoList[item.category1][item.category2+1].title}}</view>
             <view class="text-gray text-xs">
               <view class="flex">
                 <view class="flex-sub">{{item.author}} · {{item.mtime}} </view>
@@ -88,23 +93,63 @@
       </view>
     </scroll-view>
     <!--           底部引导图           -->
-<view class="{{touchBottom==true?'show':'hidden'}}">
-<view class="solid-bottom text-xs padding text-center">
+    <view class="{{touchBottom==true?'show':'hidden'}}">
+      <view class="solid-bottom text-xs padding text-center">
         <text class="text-gray">一一  今天就推荐到这里啦，要不干点别的？  一一</text>
-</view>
-<view class="bg-img padding-tb-xl" style="background-image: url('https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg');height: 414rpx;">
-</view>
-</view>
+      </view>
+      <view class="bg-img bg-mask padding-tb-xl" style="background-image: url('https://xinyujiang.cn/media/no-diary.jpg');height: 414rpx;">
+      <view class="padding-xl text-white">
+    <view class="padding-xs">
+      {{bottomText[page%3]}}
+    </view>
+  </view>
+      </view>
+    </view>
   </view>
 
-  <!--         科普部分           -->
+  <!--         知识部分           -->
   <view class="{{currentTab == 1 ? 'show':'hidden'}}">
     <scroll-view>
+
+      <view class="VerticalBox">
+
+        <scroll-view class="VerticalNav nav" scroll-y scroll-with-animation scroll-top="{{VerticalNavTop}}">
+
+          <view class="cu-item {{cateOne1==TabCur?'text-pink cur':''}}" wx:for="{{CategoryOnelist}}" wx:key wx:for-index="cateOne1">
+            <view bindtap='tabSelect' data-id="{{cateOne1}}">
+              <text class="text-grey text-sm">{{item.name}}</text>
+            </view>
+          </view>
+        </scroll-view>
+
+        <scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:200px;" scroll-into-view="main-{{MainCur}}" bindscroll="VerticalMain">
+
+          <view class="padding-top padding-lr" wx:for="{{CategoryOnelist}}" wx:for-index="cateOne2" wx:key id="main-{{cateOne2}}">
+            <view class='cu-bar solid-bottom bg-white'>
+              <view class='action'>
+                <text class='cuIcon-title text-pink'></text> {{item.name}}
+              </view>
+            </view>
+
+
+            <view class="grid col-3 padding-sm bg-white">
+              <view class="margin-tb-sm text-center" wx:for="{{CategoryTwoList[cateOne2]}}" wx:key>
+                <button class="cu-btn sm round line-pink" bindtap="articleSelect" data-id1="{{cateOne2}}" data-id2="{{index}}">{{item.title}}</button>
+              </view>
+            </view>
+
+          </view>
+        </scroll-view>
+      </view>
+
+
+
+
       <view class="cu-list menu solid-bottom" wx:for="{{articles}}" wx:key="">
         <view class='cu-item' data-id='{{index}}' data-type='1' bindtap='tokp'>
           <view class="content">
             <view>{{item.desc}}</view>
-            <view class="cu-tag radius sm">#{{item.category2}}</view>
+            <view class="cu-tag radius sm">#{{CategoryTwoList[item.category1][item.category2+1].title}}</view>
             <view class="text-gray text-xs">
               <view class="flex">
                 <view class="flex-sub">{{item.author}} · {{item.mtime}} </view>
@@ -123,13 +168,18 @@
       </view>
     </scroll-view>
     <!--           底部引导图           -->
-<view class="{{touchBottom==true?'show':'hidden'}}">
-<view class="solid-bottom text-xs padding text-center">
+    <view class="{{touchBottom==true?'show':'hidden'}}">
+      <view class="solid-bottom text-xs padding text-center">
         <text class="text-gray">一一  今天就推荐到这里啦，要不干点别的？  一一</text>
-</view>
-<view class="bg-img padding-tb-xl" style="background-image: url('https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg');height: 414rpx;">
-</view>
-</view>
+      </view>
+      <view class="bg-img padding-tb-xl bg-mask" style="background-image: url('https://xinyujiang.cn/media/no-diary.jpg');height: 414rpx;">
+      <view class="padding-xl text-white">
+    <view class="padding-xs text-xl">
+       {{bottomText[page%3]}}
+    </view>
+  </view>
+      </view>
+    </view>
   </view>
 
   <!--         冥想部分           -->
@@ -200,7 +250,7 @@
     </view>
     <view class="cu-list menu-avatar">
       <view class="cu-item">
-        <view class="cu-avatar round lg" style="background-image:url({{photo_url}});"></view>
+        <view class="cu-avatar round lg" style="background-image:url('https://xinyuJiang.cn/static/img/bot-head.png');"></view>
         <view class="content flex-sub">
           <view class="text-grey">心理帮 - 阿涛</view>
           <view class="text-gray text-sm flex justify-between">
@@ -219,4 +269,3 @@
     </view>
   </view>
 </view>
-

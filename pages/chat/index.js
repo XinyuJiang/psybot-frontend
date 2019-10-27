@@ -1,4 +1,3 @@
-
 const util = require('../../utils/util.js')
 const app = getApp()
 const domain = 'https://xinyuJiang.cn/psybot/'
@@ -8,29 +7,37 @@ Page({
     userInfo: {},
     openid: '',
     user_id: '',
-    lists: [
-      { title: '首次体验', tap: 'tofirst' },
-      { title: '疏导模式', tap: 'tochat' },
-      { title: '闲聊模式', tap: 'tosmalltalk'},
+    lists: [{
+        title: '首次体验',
+        tap: 'tofirst'
+      },
+      {
+        title: '疏导模式',
+        tap: 'tochat'
+      },
+      {
+        title: '闲聊模式',
+        tap: 'tosmalltalk'
+      },
     ],
   },
-  tofirst:function(){
-     wx.navigateTo({ 
-       url: 'first/first',
-     })
+  tofirst: function() {
+    wx.navigateTo({
+      url: 'first/first',
+    })
   },
-  tochat: function () {
+  tochat: function() {
     wx.navigateTo({
       url: 'chat/chat',
     })
   },
-  tosmalltalk: function () {
+  tosmalltalk: function() {
     wx.navigateTo({
       url: 'smalltalk/smalltalk?talkmode=0',
     })
   },
 
-  onLoad: function (options) {
+  onLoad: function(options) {
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
