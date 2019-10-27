@@ -25,7 +25,7 @@
       <view class="cu-item">
         <view class="cu-avatar round lg" style="background-image:url(https://xinyuJiang.cn/static/img/logo.png);" id="posterLogo"></view>
         <view class="content flex-sub">
-          <view class="text-black justify-end" id="posterName">一棵李橡树</view>
+          <view class="text-black justify-end" id="posterName">{{userInfo.nickName}}</view>
           <view class="text-gray text-sm flex justify-end" id="posterDate">
             {{date}}
           </view>

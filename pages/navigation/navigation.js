@@ -5,10 +5,24 @@ const domain = 'https://xinyuJiang.cn/psybot/'
 const articleDomain = 'https://imgtext.psyhack.top'
 Page({
   data: {
+    // 是否显示每日说浮动按钮
+    everydayTalkButton: true,
+
     // 判断是否首次进入本页面，防止模态框多次弹出
     isFist: true,
+
     // 下滑拉取更多文章，页面序号
     page: 0,
+
+    // 用户信息
+    userInfo: {},
+
+    // 是否显示备用顶部导航
+    swiperTapTop: false,
+
+    // 是否到达底部
+    touchBottom: false,
+
     background: [
       'https://xinyuJiang.cn/static/banner/banner1.jpg',
       'https://xinyuJiang.cn/static/banner/banner2.jpg',
@@ -100,7 +114,7 @@ Page({
     }
   },
 
-  toMeditation: function () {
+  toMeditation: function() {
     this.setData({
       currentTab: 2,
     })
@@ -292,15 +306,52 @@ Page({
   },
 
   // 展示每日一句模态框
-  showModal(e) {
+  showModal() {
     this.setData({
-      modalName: e
+      modalName: "Image"
     })
   },
   hideModal(e) {
     this.setData({
       modalName: null
     })
+  },
+
+  // 监听导航在视图中位置
+  onPageScroll: function(e) {
+    let that = this;
+    var query = wx.createSelectorQuery()
+    query.select('.swiper-tab').boundingClientRect()
+    query.selectViewport().scrollOffset()
+    query.exec(function(res) {
+      if (res[0].top < 0) {
+        that.setData({
+          swiperTapTop: true
+        })     
+      }
+      if (res[0].top > 0) {
+        that.setData({
+          swiperTapTop: false
+        })
+      }
+    })
+  },
+  // 根据导航位置决定是否显示备用导航
+  onShow: function() {
+    this.onPageScroll()
+  },
+
+
+
+
+  // 关闭每日说浮动按钮
+  hideEverydayTalkButton() {
+    var that = this
+    that.setData({
+      everydayTalkButton: false
+    })
+    console.log("close button")
+    console.log(that.data.everydayTalkButton)
   },
 
   // 获取每日图片和文字
@@ -311,7 +362,7 @@ Page({
       url: domain + 'dailyrecommend/',
       method: 'GET',
       success: res => {
-        var dailyText = res.data.data[textID].text.replace(/，/g, "\n").replace(/。/g, "\n\n").replace(/,/g, "\n").replace(/!/g, "\n").replace(/----/g, "\t---- ").replace(/;/g, "\n\n").replace(/；/g, "\n\n")
+        var dailyText = res.data.data[textID].text.replace(/，/g, "\n").replace(/。/g, "\n\n").replace(/,/g, "\n").replace(/!/g, "\n").replace(/----/g, "\t---- ").replace(/;/g, "\n\n").replace(/；/g, "\n\n").replace(/:/g, "\n").replace(/：/g, "\n")
         var that = this
         that.setData({
           dailyText: dailyText,
@@ -334,6 +385,9 @@ Page({
   onLoad: function(options) {
     wx.setNavigationBarTitle({
       title: '首页'
+    })
+    this.setData({
+      userInfo: app.globalData.userInfo,
     })
     this.getPaper()
     this.getAudio()

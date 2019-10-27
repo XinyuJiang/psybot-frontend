@@ -15,17 +15,24 @@ page {
 }
 
 .swiper-tab {
-  width: 90%;
-  margin: 0 0 0 5%;
-  padding-top: 10px;
+  width: 100%;
+  padding-top: 0px;
   /* border-bottom: 2rpx solid #ccc; */
   text-align: center;
   height: 75rpx;
   line-height: 65rpx;
   display: flex;
   flex-flow: row;
+  background-color: #fff;
   justify-content: space-between;
   font-size: 16px;
+  z-index: 500;
+  position: relative;
+}
+
+.swiper-tab-fixed{
+  position: fixed;
+  top:0px;
 }
 
 .swiper-tab-item {
@@ -107,4 +114,13 @@ page {
   position: relative;
   left: -30%;
   top: 100px;
+}
+
+.button-everydayTalk{
+  position: fixed;
+  height: 60px;
+  width: 60px;
+  left: 300px;
+  top: 530px;
+  z-index: 500;
 }

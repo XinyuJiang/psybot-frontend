@@ -187,6 +187,7 @@ Page({
     photo_url: '',
     dailyText: '每日说',
     date: '',
+    userInfo:{},
     modalName: '',
     posterConfig: posterConfig.cardConfig,
     CustomBar: app.globalData.CustomBar,
@@ -207,7 +208,7 @@ Page({
       url: domain + 'dailyrecommend/',
       method: 'GET',
       success: res => {
-        var dailyText = res.data.data[textID].text.replace(/，/g, "\n").replace(/。/g, "\n\n").replace(/,/g, "\n").replace(/!/g, "\n").replace(/----/g, "\t---- ").replace(/;/g, "\n\n").replace(/；/g, "\n\n")
+        var dailyText = res.data.data[textID].text.replace(/，/g, "\n").replace(/。/g, "\n\n").replace(/,/g, "\n").replace(/!/g, "\n").replace(/----/g, "\t---- ").replace(/;/g, "\n\n").replace(/:/g, "\n").replace(/：/g, "\n").replace(/；/g, "\n\n")
         var that = this
         that.setData({
           dailyText: dailyText,
@@ -245,7 +246,7 @@ Page({
   onCreatePoster() {
     // 动态更新海报信息
     posterConfig.cardConfig.texts[0].text = this.data.dailyText;
-    posterConfig.cardConfig.texts[1].text = '一棵李橡树';
+    posterConfig.cardConfig.texts[1].text = this.data.userInfo.nickName;
     posterConfig.cardConfig.texts[2].text = this.data.date;
     posterConfig.cardConfig.images[0].url = this.data.photo_url;
     this.setData({
@@ -308,6 +309,9 @@ Page({
     wx.setNavigationBarTitle({
       title: '每日说'
     });
+    this.setData({
+      userInfo: app.globalData.userInfo
+    })
     this.dailyInfo();
   },
 })
