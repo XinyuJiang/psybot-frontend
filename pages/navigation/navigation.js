@@ -22,6 +22,8 @@ Page({
 
     // 是否到达底部
     touchBottom: false,
+    // 获取到的文章数量
+    articleNum:0,
 
     background: [
       'https://xinyuJiang.cn/static/banner/banner1.jpg',
@@ -204,30 +206,53 @@ Page({
           articles[i].meta2 = JSON.parse(articles[i].meta2)
         }
 
-        //科普文章倒序
+        //文章去重
+        var hash = [];
         var articles = this.data.articles
-        for (let j = 0; j < len / 2; ++j) {
-          const t = articles[j]
-          articles[j] = articles[len - 1 - j]
-          articles[len - 1 - j] = t
-        }
+        articles = articles.reduce(function (origin, aiticle) {
+          hash[aiticle['id']] ? '' : hash[aiticle['id']] = true && origin.push(aiticle);
+          return origin;
+        }, []);
+        console.log(articles)
         this.setData({
           articles: articles
         })
 
-        //乱序推荐文章
-        var recommend = articles
-        const length = len
-        for (let i = 0; i < length; ++i) {
-          const x = Math.floor(Math.random() * length)
-          const y = Math.floor(Math.random() * length)
-          const temp = recommend[x]
-          recommend[x] = recommend[y]
-          recommend[y] = temp
-        }
+        //计算推荐文章因子
+        articles.sort(function (a, b) {
+          var resultA = a.meta2[0]+a.meta2[2]+a.meta2[3]
+          var resultB = b.meta2[0] + b.meta2[2] + b.meta2[3]
+
+          var parameter = 1;
+          var timestamp = Date.parse(new Date()) / 1000;
+          if ((timestamp - a.meta2.org_ctime) < 15 * 24 * 60 * 60) {
+            parameter = 0.7
+          } else if ((timestamp - a.meta2.org_ctime) < 30 * 24 * 60 * 60) {
+            parameter = 0.5
+          } else {
+            parameter = 0.1
+          }
+          resultA = resultA * parameter;
+
+          parameter = 1;
+          if ((timestamp - b.meta2.org_ctime) < 15 * 24 * 60 * 60) {
+            parameter = 0.7
+          } else if ((timestamp - a.meta2.org_ctime) < 30 * 24 * 60 * 60) {
+            parameter = 0.5
+          } else {
+            parameter = 0.1
+          }
+          resultB = resultB * parameter
+
+          return resultB-resultA;
+        });
+        console.log(articles)
         this.setData({
-          recommend: recommend
+          recommend: articles
         })
+        
+
+        
 
       }
     })
@@ -282,24 +307,69 @@ Page({
 
 
 
-
-        const len = this.data.articles.length
-        //科普文章倒序
+        //文章去重
+        var hash = [];
         var articles = this.data.articles
-        for (let j = 0; j < len / 2; ++j) {
-          const t = articles[j]
-          articles[j] = articles[len - 1 - j]
-          articles[len - 1 - j] = t
-        }
+        articles = articles.reduce(function (origin, aiticle) {
+          hash[aiticle['id']] ? '' : hash[aiticle['id']] = true && origin.push(aiticle);
+          return origin;
+        }, []);
+        console.log(articles)
         this.setData({
           articles: articles
         })
 
-        //设置推荐文章
-        var recommend = articles
+        
+
+
+
+        //计算推荐文章因子
+        articles.sort(function (a, b) {
+          //  console.log(a[1])
+          var resultA = a.meta2[0] + a.meta2[2] + a.meta2[3]
+          var resultB = b.meta2[0] + b.meta2[2] + b.meta2[3]
+
+          var parameter = 1;
+          var timestamp = Date.parse(new Date())/1000;
+          if((timestamp-a.meta2.org_ctime)<15*24*60*60){
+            parameter = 0.7
+          } else if ((timestamp - a.meta2.org_ctime) < 30 * 24 * 60 * 60){
+            parameter = 0.5
+          }else{
+            parameter = 0.1
+          }
+          resultA = resultA*parameter;
+
+          parameter = 1;
+          if ((timestamp - b.meta2.org_ctime) < 15 * 24 * 60 * 60) {
+            parameter = 0.7
+          } else if ((timestamp - a.meta2.org_ctime) < 30 * 24 * 60 * 60) {
+            parameter = 0.5
+          } else {
+            parameter = 0.1
+          }
+          resultB = resultB * parameter
+
+
+          return resultB-resultA;
+        });
+        console.log(articles)
         this.setData({
-          recommend: recommend
+          recommend: articles
         })
+
+        // 如果文章数量不变，显示引导图
+        if (this.data.articleNum == this.data.articles.length) {
+          this.setData({
+            touchBottom: true
+          })
+        }
+        else {
+          this.setData({
+            articleNum: this.data.articles.length
+          })
+        }
+
 
       }
     })
@@ -384,7 +454,7 @@ Page({
    */
   onLoad: function(options) {
     wx.setNavigationBarTitle({
-      title: '首页'
+      title: '发现'
     })
     this.setData({
       userInfo: app.globalData.userInfo,

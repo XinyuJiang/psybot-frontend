@@ -7,23 +7,24 @@
       </swiper-item>
     </block>
   </swiper>
-<ad unit-id="adunit-19830d1de802fa29" ad-type="video" ad-theme="white"></ad>
+
+
   <!--         导航           -->
   <view class="swiper-tab">
     <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">推荐</view>
-    <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">科普</view>
+    <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">知识</view>
     <view class="swiper-tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="clickTab">冥想</view>
     <view class="swiper-tab-item {{currentTab==3?'active':''}}" data-current="3" bindtap="clickTab">FM</view>
   </view>
   <!--         备用吸顶导航           -->
-<view class="{{swiperTapTop==true?'show':'hidden'}}">
-  <view class="swiper-tab swiper-tab-fixed">
-    <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">推荐</view>
-    <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">科普</view>
-    <view class="swiper-tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="clickTab">冥想</view>
-    <view class="swiper-tab-item {{currentTab==3?'active':''}}" data-current="3" bindtap="clickTab">FM</view>
+  <view class="{{swiperTapTop==true?'show':'hidden'}}">
+    <view class="swiper-tab swiper-tab-fixed">
+      <view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">推荐</view>
+      <view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">科普</view>
+      <view class="swiper-tab-item {{currentTab==2?'active':''}}" data-current="2" bindtap="clickTab">冥想</view>
+      <view class="swiper-tab-item {{currentTab==3?'active':''}}" data-current="3" bindtap="clickTab">FM</view>
+    </view>
   </view>
-   </view>
 
   <!--         每日说浮动按钮           -->
   <view class="{{everydayTalkButton==true?'show':'hidden'}}">
@@ -68,7 +69,7 @@
         <view class='cu-item' data-id='{{index}}' data-type='0' bindtap='tokp'>
           <view class="content">
             <view>{{item.desc}}</view>
-            <view class="cu-tag radius sm">#{{item.category1}}</view>
+            <view class="cu-tag radius sm">#{{item.category2}}</view>
             <view class="text-gray text-xs">
               <view class="flex">
                 <view class="flex-sub">{{item.author}} · {{item.mtime}} </view>
@@ -86,6 +87,14 @@
         </view>
       </view>
     </scroll-view>
+    <!--           底部引导图           -->
+<view class="{{touchBottom==true?'show':'hidden'}}">
+<view class="solid-bottom text-xs padding text-center">
+        <text class="text-gray">一一  今天就推荐到这里啦，要不干点别的？  一一</text>
+</view>
+<view class="bg-img padding-tb-xl" style="background-image: url('https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg');height: 414rpx;">
+</view>
+</view>
   </view>
 
   <!--         科普部分           -->
@@ -113,6 +122,14 @@
         </view>
       </view>
     </scroll-view>
+    <!--           底部引导图           -->
+<view class="{{touchBottom==true?'show':'hidden'}}">
+<view class="solid-bottom text-xs padding text-center">
+        <text class="text-gray">一一  今天就推荐到这里啦，要不干点别的？  一一</text>
+</view>
+<view class="bg-img padding-tb-xl" style="background-image: url('https://ossweb-img.qq.com/images/lol/web201310/skin/big10006.jpg');height: 414rpx;">
+</view>
+</view>
   </view>
 
   <!--         冥想部分           -->
@@ -202,3 +219,4 @@
     </view>
   </view>
 </view>
+
