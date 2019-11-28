@@ -7,6 +7,7 @@ var viewWidth //播放进度滑块宽度
 var lastTime //滑块移动间隔计算
 const util = require('../../../utils/util.js')
 const app = getApp()
+const turingBotURL = 'http://openapi.tuling123.com/openapi/api/v2'
 const domain = 'https://xinyuJiang.cn/psybot/'
 const botURL = 'https://xinyuJiang.cn/static/img/bot-head.png'
 Page({
@@ -102,30 +103,37 @@ Page({
     that.store(message.content, 0);
     that.setData({ message_list: message_list })
     that.scrollToBottom()
-    //let _url = "https://www.tuling123.com/openapi/api";
-    let _url = domain + 'chat/';
+    //let turingBotURL = "https://www.tuling123.com/openapi/api";
     console.log(content)
     wx.request({
-      url: _url,
+      url: turingBotURL,
+      method: 'post',
       data: {
-        //key: that.data.key, //江需要注释掉这里
-        text: content   //图灵为info:
+        "perception": {
+          "inputText": {
+            "text": content
+          }
+        },
+        "userInfo": {
+          "apiKey": this.data.key,
+          "userId":"demo"
+        }
       },
       //封装返回数据格式
       header: {
-        'Content-Type': 'application/json'
+        "Content-Type": 'json'
       },
       //请求成功的回调
       success: function (res) {
-        var data = res.data.data;
+        var data = res.data;
         console.log(data)
-        if (data.code == 0) {   //图灵：100000 表示返回成功；江：0 表示返回成功
+        if (data.intent.code > 8008) {   
           //将返回值追加到列表
           var message = {
             myself: 0,
             head_img_url: botURL,
             'msg_type': 'text',
-            'content': data,
+            'content': data.results[0].values.text,
             create_time: util.formatTime(new Date())
           }
           console.log(message)
