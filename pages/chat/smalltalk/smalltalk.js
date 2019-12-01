@@ -104,6 +104,7 @@ Page({
     that.setData({ message_list: message_list })
     that.scrollToBottom()
     //let turingBotURL = "https://www.tuling123.com/openapi/api";
+    let turingBotURL = "https://xinyujiang.cn/tulingapi/v2";
     console.log(content)
     wx.request({
       url: turingBotURL,
