@@ -332,7 +332,7 @@ Page({
     })
   },
 
-  // 生成海报，todo:保存至本地
+  // 生成海报
   onCreatePoster() {
     // 动态更新海报信息
     posterConfig.cardConfig.texts[0].text = this.data.dailyText;

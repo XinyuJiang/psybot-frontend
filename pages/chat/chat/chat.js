@@ -999,17 +999,9 @@ Page({
           method: 'get',
           success: function (res) {
             console.log('显示userid：',that.data.userID )
-            that.makemessage(0, 'text', '小主人，这是你近五天的情绪报告')
-            let tempFilePath = canvas.toTempFilePathSync({
-              x: 10,
-              y: 10,
-              width: 200,
-              height: 150,
-              destWidth: 400,
-              destHeight: 300
-            })
-            that.makemessage(0, 'image', tempFilePath)
-            console.log(res.data.data.url)
+            //that.makemessage(0, 'text', '小主人，这是你近五天的情绪报告')
+            //that.makemessage(0, 'image', tempFilePath)
+            //console.log(res.data.data.url)
             that.makemessage(0, 'text', '😝相信小主人在我的陪伴下情绪会有所改善~ ')
             that.makemessage(0, 'text', '下一步我们做些什么好的呢？')
             that.makemessage(0, 'button4', '')

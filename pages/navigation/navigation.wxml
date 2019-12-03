@@ -110,41 +110,29 @@
   <!--         知识部分           -->
   <view class="{{currentTab == 1 ? 'show':'hidden'}}">
     <scroll-view>
-
       <view class="VerticalBox">
-
         <scroll-view class="VerticalNav nav" scroll-y scroll-with-animation scroll-top="{{VerticalNavTop}}">
-
           <view class="cu-item {{cateOne1==TabCur?'text-pink cur':''}}" wx:for="{{CategoryOnelist}}" wx:key wx:for-index="cateOne1">
             <view bindtap='tabSelect' data-id="{{cateOne1}}">
               <text class="text-grey text-sm">{{item.name}}</text>
             </view>
           </view>
         </scroll-view>
-
         <scroll-view class="VerticalMain" scroll-y scroll-with-animation style="height:200px;" scroll-into-view="main-{{MainCur}}" bindscroll="VerticalMain">
-
           <view class="padding-top padding-lr" wx:for="{{CategoryOnelist}}" wx:for-index="cateOne2" wx:key id="main-{{cateOne2}}">
             <view class='cu-bar solid-bottom bg-white'>
               <view class='action'>
                 <text class='cuIcon-title text-pink'></text> {{item.name}}
               </view>
             </view>
-
-
             <view class="grid col-3 padding-sm bg-white">
               <view class="margin-tb-sm text-center" wx:for="{{CategoryTwoList[cateOne2]}}" wx:key>
                 <button class="cu-btn sm round line-pink" bindtap="articleSelect" data-id1="{{cateOne2}}" data-id2="{{index}}">{{item.title}}</button>
               </view>
             </view>
-
           </view>
         </scroll-view>
       </view>
-
-
-
-
       <view class="cu-list menu solid-bottom" wx:for="{{articles}}" wx:key="">
         <view class='cu-item' data-id='{{index}}' data-type='1' bindtap='tokp'>
           <view class="content">

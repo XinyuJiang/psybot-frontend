@@ -389,7 +389,7 @@ Page({
           if (articles[i].desc.length > 26) {
             articles[i].desc = articles[i].desc.substring(0, 26) + '...';
           }
-          articles[i].author = articles[i].author.substring(12, 17);
+          articles[i].author = articles[i].author.substring(5, 9);
           articles[i].meta2 = JSON.parse(articles[i].meta2)
         }
 
@@ -455,8 +455,16 @@ Page({
       page: this.data.page + 1
     })
     wx.request({
-      url: articleDomain + '/service/articles/list?page=' + this.data.page,
+      url: articleDomain + '/service/articles/list',
       method: "POST",
+      data:{
+        page:this.data.page,
+        size:5
+      },
+      header: {
+       //默认值'Content-Type': 'application/json'
+      'content-type': 'application/x-www-form-urlencoded' //post
+    },
       success: res => {
         console.log(res)
         var that = this
@@ -470,7 +478,7 @@ Page({
         // 格式化标题 desc
         for (var i = 0; i < res.data.data.articles.length; i++) {
           res.data.data.articles[i].meta2 = JSON.parse(res.data.data.articles[i].meta2)
-          res.data.data.articles[i].author = res.data.data.articles[i].author.substring(12, 17);
+          res.data.data.articles[i].author = res.data.data.articles[i].author.substring(5, 9);
           res.data.data.articles[i].mtime = res.data.data.articles[i].mtime.substring(0, 10);
           if (res.data.data.articles[i].desc.length > 26) {
             res.data.data.articles[i].desc = res.data.data.articles[i].desc.substring(0, 26) + '...';
